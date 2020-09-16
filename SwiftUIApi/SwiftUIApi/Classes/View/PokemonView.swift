@@ -13,7 +13,11 @@ struct PokemonView: View {
     var pokemon: Pokemon
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            FakeNavBar(label: pokemon.name)
+            Spacer()
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        }
     }
 }
 

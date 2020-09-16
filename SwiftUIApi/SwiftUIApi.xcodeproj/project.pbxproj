@@ -11,6 +11,11 @@
 		5D4B71092512072400A8DC51 /* PokemonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B71082512072400A8DC51 /* PokemonView.swift */; };
 		5D4B710B2512093B00A8DC51 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B710A2512093B00A8DC51 /* ImageLoader.swift */; };
 		5D4B710D251209C400A8DC51 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B710C251209C400A8DC51 /* CardView.swift */; };
+		5D4B71152512458300A8DC51 /* NavControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B71142512458300A8DC51 /* NavControllerView.swift */; };
+		5D4B7118251249C000A8DC51 /* NavPushButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B7117251249C000A8DC51 /* NavPushButton.swift */; };
+		5D4B711A251249CF00A8DC51 /* NavPopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B7119251249CF00A8DC51 /* NavPopButton.swift */; };
+		5D4B711E25124A7B00A8DC51 /* NavControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B711D25124A7B00A8DC51 /* NavControllerViewModel.swift */; };
+		5D4B712025124A9B00A8DC51 /* FakeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B711F25124A9B00A8DC51 /* FakeNavBar.swift */; };
 		5D72F580250F91E100DC66BD /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F57F250F91E100DC66BD /* PokemonModel.swift */; };
 		5D72F582250F921000DC66BD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F581250F921000DC66BD /* API.swift */; };
 		5D72F584250F94A100DC66BD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F583250F94A100DC66BD /* Extensions.swift */; };
@@ -30,6 +35,11 @@
 		5D4B71082512072400A8DC51 /* PokemonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonView.swift; sourceTree = "<group>"; };
 		5D4B710A2512093B00A8DC51 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		5D4B710C251209C400A8DC51 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		5D4B71142512458300A8DC51 /* NavControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavControllerView.swift; sourceTree = "<group>"; };
+		5D4B7117251249C000A8DC51 /* NavPushButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPushButton.swift; sourceTree = "<group>"; };
+		5D4B7119251249CF00A8DC51 /* NavPopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPopButton.swift; sourceTree = "<group>"; };
+		5D4B711D25124A7B00A8DC51 /* NavControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavControllerViewModel.swift; sourceTree = "<group>"; };
+		5D4B711F25124A9B00A8DC51 /* FakeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNavBar.swift; sourceTree = "<group>"; };
 		5D72F57F250F91E100DC66BD /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
 		5D72F581250F921000DC66BD /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		5D72F583250F94A100DC66BD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -57,6 +67,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D4B7116251249B000A8DC51 /* NavController */ = {
+			isa = PBXGroup;
+			children = (
+				5D4B71142512458300A8DC51 /* NavControllerView.swift */,
+				5D4B7117251249C000A8DC51 /* NavPushButton.swift */,
+				5D4B7119251249CF00A8DC51 /* NavPopButton.swift */,
+				5D4B711D25124A7B00A8DC51 /* NavControllerViewModel.swift */,
+				5D4B711F25124A9B00A8DC51 /* FakeNavBar.swift */,
+			);
+			path = NavController;
+			sourceTree = "<group>";
+		};
 		5D7DBC95250F796F00688E2C = {
 			isa = PBXGroup;
 			children = (
@@ -126,7 +148,6 @@
 			children = (
 				5D72F581250F921000DC66BD /* API.swift */,
 				5D72F583250F94A100DC66BD /* Extensions.swift */,
-				5D72F585250FAD3800DC66BD /* ContentViewModel.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -134,7 +155,9 @@
 		5D7DBCB9250F79D200688E2C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5D4B7116251249B000A8DC51 /* NavController */,
 				5D7DBCA5250F796F00688E2C /* ContentView.swift */,
+				5D72F585250FAD3800DC66BD /* ContentViewModel.swift */,
 				5D72F587250FAFE100DC66BD /* Spinner.swift */,
 				5D4B71062512053000A8DC51 /* RemoteImageView.swift */,
 				5D4B71082512072400A8DC51 /* PokemonView.swift */,
@@ -224,17 +247,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D4B7118251249C000A8DC51 /* NavPushButton.swift in Sources */,
 				5D7DBCA2250F796F00688E2C /* AppDelegate.swift in Sources */,
 				5D72F584250F94A100DC66BD /* Extensions.swift in Sources */,
 				5D4B710B2512093B00A8DC51 /* ImageLoader.swift in Sources */,
 				5D7DBCA4250F796F00688E2C /* SceneDelegate.swift in Sources */,
 				5D72F580250F91E100DC66BD /* PokemonModel.swift in Sources */,
+				5D4B712025124A9B00A8DC51 /* FakeNavBar.swift in Sources */,
 				5D7DBCA6250F796F00688E2C /* ContentView.swift in Sources */,
 				5DDF9E5D2510C6F3008905D8 /* PokemonCardModel.swift in Sources */,
+				5D4B711E25124A7B00A8DC51 /* NavControllerViewModel.swift in Sources */,
 				5D4B710D251209C400A8DC51 /* CardView.swift in Sources */,
 				5D4B71072512053000A8DC51 /* RemoteImageView.swift in Sources */,
 				5D72F582250F921000DC66BD /* API.swift in Sources */,
+				5D4B71152512458300A8DC51 /* NavControllerView.swift in Sources */,
 				5D4B71092512072400A8DC51 /* PokemonView.swift in Sources */,
+				5D4B711A251249CF00A8DC51 /* NavPopButton.swift in Sources */,
 				5D72F586250FAD3800DC66BD /* ContentViewModel.swift in Sources */,
 				5D72F588250FAFE100DC66BD /* Spinner.swift in Sources */,
 			);

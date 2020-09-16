@@ -27,17 +27,12 @@ final class ContentViewModel: ObservableObject {
     
     private var subscriptions = Set<AnyCancellable>()
     
+    // MARK: Pokemons
+    
     func fetchPokemons() {
         API.nextPokemonPage(offset: state.offset, limit: state.limit)
         .sink(receiveCompletion: onReceive,
               receiveValue: onReceive)
-        .store(in: &subscriptions)
-    }
-    
-    func fetchCards() {
-        API.nextCardsPage(page: state.cardPage, pageSize: state.limit)
-        .sink(receiveCompletion: onReceiveCard,
-              receiveValue: onReceiveCard)
         .store(in: &subscriptions)
     }
     
@@ -52,6 +47,15 @@ final class ContentViewModel: ObservableObject {
         state.pokemons += posts.results ?? []
         state.offset += state.limit
         state.canLoadNextPage = true
+    }
+    
+    // MARK: Cards
+    
+    func fetchCards() {
+        API.nextCardsPage(page: state.cardPage, pageSize: state.limit)
+        .sink(receiveCompletion: onReceiveCard,
+              receiveValue: onReceiveCard)
+        .store(in: &subscriptions)
     }
     
     private func onReceiveCard(_ completion: Subscribers.Completion<Error>) {

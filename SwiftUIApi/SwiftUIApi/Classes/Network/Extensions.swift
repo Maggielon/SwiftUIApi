@@ -107,3 +107,17 @@ extension UIImage {
         self.init(cgImage: cgImage)
     }
 }
+
+extension UIApplication {
+    
+    var keyWindowInConnectedScenes: UIWindow? {
+        return windows.first(where: { $0.isKeyWindow })
+    }
+}
+
+extension UIDevice {
+    var hasNotch: Bool {
+        let bottom = UIApplication.shared.keyWindowInConnectedScenes?.safeAreaInsets.bottom ?? 0
+        return bottom > 0
+    }
+}

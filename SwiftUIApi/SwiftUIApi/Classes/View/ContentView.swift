@@ -20,26 +20,21 @@ struct ContentView: View {
     @ObservedObject var  viewModel = ContentViewModel()
     
     var body: some View {
-        NavigationView {
+        NavControllerView(transition: .custom(
+            push: .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)),
+            pop: .asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
+        )) {
             VStack {
-                Picker(selection: $viewModel.selected, label: Text("Select")) {
-                    Text("Pokemon").tag(0)
-                    Text("Cards").tag(1)
+                FakeNavBar(label: "Pokemon")
+                Picker(selection: self.$viewModel.selected, label: Text("Select")) {
+                    Text("Cards").tag(0)
+                    Text("Pokemons").tag(1)
                 }.pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal, 15)
                 List {
                     Section {
-                        if viewModel.selected == 0 {
-                            ForEach(viewModel.state.pokemons) { pokemon in
-                                PokemonCell(pokemon: pokemon)
-                                    .onAppear() {
-                                        if self.viewModel.state.pokemons.isLastItem(pokemon) {
-                                            self.viewModel.fetchPokemons()
-                                        }
-                                }
-                            }
-                        } else {
-                            ForEach(viewModel.state.cards) { card in
+                        if self.viewModel.selected == 0 {
+                            ForEach(self.viewModel.state.cards) { card in
                                 CardCell(card: card)
                                     .onAppear() {
                                         if self.viewModel.state.cards.isLastItem(card) {
@@ -47,18 +42,28 @@ struct ContentView: View {
                                         }
                                 }
                             }
+                        } else {
+                            ForEach(self.viewModel.state.pokemons) { pokemon in
+                                PokemonCell(pokemon: pokemon)
+                                    .onAppear() {
+                                        if self.viewModel.state.pokemons.isLastItem(pokemon) {
+                                            self.viewModel.fetchPokemons()
+                                        }
+                                }
+                            }
                         }
                     }
-                    if viewModel.selected == 0 ? viewModel.state.canLoadNextPage : viewModel.state.canLoadCardNextPage {
+                    if self.viewModel.selected == 0 ? self.viewModel.state.canLoadCardNextPage : self.viewModel.state.canLoadNextPage {
                         Spinner(style: .medium)
                             .frame(idealWidth: .infinity, maxWidth: .infinity, alignment: .center)
                     }
                 }
-            }.navigationBarTitle(Text("Pokemon"))
-        }.edgesIgnoringSafeArea(.bottom)
-            .onAppear() {
-                self.viewModel.fetchPokemons()
-                self.viewModel.fetchCards()
+            }
+        }
+        .edgesIgnoringSafeArea(.bottom)
+        .onAppear() {
+            self.viewModel.fetchCards()
+            self.viewModel.fetchPokemons()
         }
     }
 }
@@ -69,11 +74,13 @@ struct PokemonCell: View {
     var pokemon: Pokemon
     
     var body: some View {
-        NavigationLink(destination: PokemonView(pokemon: pokemon)) {
-            VStack(alignment: .leading) {
-                Text(pokemon.name.capitalized)
-                    .font(.system(size: 18, weight: .semibold))
-            }
+        NavPushButton(destination: PokemonView(pokemon: pokemon)) {
+            HStack {
+                Text(self.pokemon.name.capitalized)
+                .font(.system(size: 18, weight: .semibold))
+                Spacer()
+                Image(systemName: "chevron.right")
+            }.contentShape(Rectangle())
         }
     }
 }
@@ -83,12 +90,12 @@ struct CardCell: View {
     var card: Card
     
     var body: some View {
-        NavigationLink(destination: CardView(card: card)) {
+        NavPushButton(destination: CardView(card: card)) {
             HStack {
-                RemoteImageView(imageLoader: ImageLoader(url: URL(string: card.imageURL ?? "")))
-                Text(card.name ?? "")
+                RemoteImageView(imageLoader: ImageLoader(url: URL(string: self.card.imageURL ?? "")))
+                Text(self.card.name ?? "")
                     .font(.system(size: 18, weight: .semibold))
-            }
+            }.contentShape(Rectangle())
         }
     }
 }
