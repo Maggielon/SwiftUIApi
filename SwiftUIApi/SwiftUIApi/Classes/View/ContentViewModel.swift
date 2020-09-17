@@ -8,11 +8,12 @@
 
 import Foundation
 import Combine
+import NetworkModule
 
 final class ContentViewModel: ObservableObject {
     
     struct State {
-        var pokemons: [Pokemon] = []
+        var pokemons: [PokemonItem] = []
         var cards: [Card] = []
         var offset: Int = 0
         var limit: Int = 20
@@ -30,44 +31,32 @@ final class ContentViewModel: ObservableObject {
     // MARK: Pokemons
     
     func fetchPokemons() {
-        API.nextPokemonPage(offset: state.offset, limit: state.limit)
-        .sink(receiveCompletion: onReceive,
-              receiveValue: onReceive)
-        .store(in: &subscriptions)
+        PokemonAPI.getPokemonList(limit: state.limit, offset: state.offset, completion: onReceive)
     }
     
-    private func onReceive(_ completion: Subscribers.Completion<Error>) {
-        switch completion {
-        case .finished: break
-        case .failure: state.canLoadNextPage = false
+    private func onReceive(_ list: PokemonList?, _ error: Error?) {
+        if let list = list {
+            state.pokemons += list.results ?? []
+            state.offset += state.limit
+            state.canLoadNextPage = true
+        } else if error != nil {
+            state.canLoadNextPage = false
         }
-    }
-    
-    private func onReceive(_ posts: PokemonList) {
-        state.pokemons += posts.results ?? []
-        state.offset += state.limit
-        state.canLoadNextPage = true
     }
     
     // MARK: Cards
     
     func fetchCards() {
-        API.nextCardsPage(page: state.cardPage, pageSize: state.limit)
-        .sink(receiveCompletion: onReceiveCard,
-              receiveValue: onReceiveCard)
-        .store(in: &subscriptions)
+        CardsAPI.getAllCards(page: state.cardPage, pageSize: state.limit, completion: onReceiveCard)
     }
     
-    private func onReceiveCard(_ completion: Subscribers.Completion<Error>) {
-        switch completion {
-        case .finished: break
-        case .failure: state.canLoadCardNextPage = false
+    private func onReceiveCard(_ list: CardsList?, _ error: Error?) {
+        if let list = list {
+            state.cards += list.cards ?? []
+            state.cardPage += 1
+            state.canLoadCardNextPage = true
+        } else if error != nil {
+            state.canLoadCardNextPage = false
         }
-    }
-    
-    private func onReceiveCard(_ posts: PokemonCardList) {
-        state.cards += posts.cards ?? []
-        state.cardPage += 1
-        state.canLoadCardNextPage = true
     }
 }

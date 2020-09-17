@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,8 +16,7 @@
 		5D4B711A251249CF00A8DC51 /* NavPopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B7119251249CF00A8DC51 /* NavPopButton.swift */; };
 		5D4B711E25124A7B00A8DC51 /* NavControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B711D25124A7B00A8DC51 /* NavControllerViewModel.swift */; };
 		5D4B712025124A9B00A8DC51 /* FakeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B711F25124A9B00A8DC51 /* FakeNavBar.swift */; };
-		5D72F580250F91E100DC66BD /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F57F250F91E100DC66BD /* PokemonModel.swift */; };
-		5D72F582250F921000DC66BD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F581250F921000DC66BD /* API.swift */; };
+		5D69372E25139D920024472E /* NetworkModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5D69372D25139D920024472E /* NetworkModule */; };
 		5D72F584250F94A100DC66BD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F583250F94A100DC66BD /* Extensions.swift */; };
 		5D72F586250FAD3800DC66BD /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F585250FAD3800DC66BD /* ContentViewModel.swift */; };
 		5D72F588250FAFE100DC66BD /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F587250FAFE100DC66BD /* Spinner.swift */; };
@@ -27,7 +26,6 @@
 		5D7DBCA8250F797200688E2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D7DBCA7250F797200688E2C /* Assets.xcassets */; };
 		5D7DBCAB250F797200688E2C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D7DBCAA250F797200688E2C /* Preview Assets.xcassets */; };
 		5D7DBCAE250F797200688E2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D7DBCAC250F797200688E2C /* LaunchScreen.storyboard */; };
-		5DDF9E5D2510C6F3008905D8 /* PokemonCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDF9E5C2510C6F3008905D8 /* PokemonCardModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +38,7 @@
 		5D4B7119251249CF00A8DC51 /* NavPopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPopButton.swift; sourceTree = "<group>"; };
 		5D4B711D25124A7B00A8DC51 /* NavControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavControllerViewModel.swift; sourceTree = "<group>"; };
 		5D4B711F25124A9B00A8DC51 /* FakeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNavBar.swift; sourceTree = "<group>"; };
+		5D693729251399660024472E /* NetworkModule */ = {isa = PBXFileReference; lastKnownFileType = text; name = NetworkModule; path = SwiftUIApi/NetworkModule; sourceTree = SOURCE_ROOT; };
 		5D72F57F250F91E100DC66BD /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
 		5D72F581250F921000DC66BD /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		5D72F583250F94A100DC66BD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D69372E25139D920024472E /* NetworkModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,11 +79,19 @@
 			path = NavController;
 			sourceTree = "<group>";
 		};
+		5D69372A25139C470024472E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5D7DBC95250F796F00688E2C = {
 			isa = PBXGroup;
 			children = (
 				5D7DBCA0250F796F00688E2C /* SwiftUIApi */,
 				5D7DBC9F250F796F00688E2C /* Products */,
+				5D69372A25139C470024472E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +109,7 @@
 				5D7DBCB5250F797700688E2C /* Application */,
 				5D7DBCB6250F79A000688E2C /* Supporting */,
 				5D7DBCB7250F79C300688E2C /* Classes */,
+				5D693729251399660024472E /* NetworkModule */,
 				5D7DBCA9250F797200688E2C /* Preview Content */,
 			);
 			path = SwiftUIApi;
@@ -192,6 +201,9 @@
 			dependencies = (
 			);
 			name = SwiftUIApi;
+			packageProductDependencies = (
+				5D69372D25139D920024472E /* NetworkModule */,
+			);
 			productName = SwiftUIApi;
 			productReference = 5D7DBC9E250F796F00688E2C /* SwiftUIApi.app */;
 			productType = "com.apple.product-type.application";
@@ -252,14 +264,11 @@
 				5D72F584250F94A100DC66BD /* Extensions.swift in Sources */,
 				5D4B710B2512093B00A8DC51 /* ImageLoader.swift in Sources */,
 				5D7DBCA4250F796F00688E2C /* SceneDelegate.swift in Sources */,
-				5D72F580250F91E100DC66BD /* PokemonModel.swift in Sources */,
 				5D4B712025124A9B00A8DC51 /* FakeNavBar.swift in Sources */,
 				5D7DBCA6250F796F00688E2C /* ContentView.swift in Sources */,
-				5DDF9E5D2510C6F3008905D8 /* PokemonCardModel.swift in Sources */,
 				5D4B711E25124A7B00A8DC51 /* NavControllerViewModel.swift in Sources */,
 				5D4B710D251209C400A8DC51 /* CardView.swift in Sources */,
 				5D4B71072512053000A8DC51 /* RemoteImageView.swift in Sources */,
-				5D72F582250F921000DC66BD /* API.swift in Sources */,
 				5D4B71152512458300A8DC51 /* NavControllerView.swift in Sources */,
 				5D4B71092512072400A8DC51 /* PokemonView.swift in Sources */,
 				5D4B711A251249CF00A8DC51 /* NavPopButton.swift in Sources */,
@@ -458,6 +467,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D69372D25139D920024472E /* NetworkModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5D7DBC96250F796F00688E2C /* Project object */;
 }

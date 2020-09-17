@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import NetworkModule
 
 struct CardView: View {
     
@@ -21,8 +22,4 @@ struct CardView: View {
     }
 }
 
-struct CardView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardView(card: Card(name: "Card"))
-    }
-}
+extension Card: Identifiable { }

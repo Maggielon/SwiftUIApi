@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import NetworkModule
 
 enum API {
     
@@ -44,7 +45,7 @@ enum API {
         return API.request(type: .pokemon, params: params)
     }
     
-    static func nextCardsPage(page: Int?, pageSize: Int? = 20) -> AnyPublisher<PokemonCardList, Error> {
+    static func nextCardsPage(page: Int?, pageSize: Int? = 20) -> AnyPublisher<CardsList, Error> {
         
         var params = [String: Any]()
         params["page"] = page

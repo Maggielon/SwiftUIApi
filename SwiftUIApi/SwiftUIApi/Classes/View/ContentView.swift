@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-
+import NetworkModule
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -63,7 +63,7 @@ struct ContentView: View {
         .edgesIgnoringSafeArea(.bottom)
         .onAppear() {
             self.viewModel.fetchCards()
-            self.viewModel.fetchPokemons()
+            //self.viewModel.fetchPokemons()
         }
     }
 }
@@ -71,12 +71,12 @@ struct ContentView: View {
 
 struct PokemonCell: View {
     
-    var pokemon: Pokemon
+    var pokemon: PokemonItem
     
     var body: some View {
-        NavPushButton(destination: PokemonView(pokemon: pokemon)) {
+        NavPushButton(destination: PokemonView(item: pokemon)) {
             HStack {
-                Text(self.pokemon.name.capitalized)
+                Text(self.pokemon.name?.capitalized ?? "")
                 .font(.system(size: 18, weight: .semibold))
                 Spacer()
                 Image(systemName: "chevron.right")
@@ -92,7 +92,7 @@ struct CardCell: View {
     var body: some View {
         NavPushButton(destination: CardView(card: card)) {
             HStack {
-                RemoteImageView(imageLoader: ImageLoader(url: URL(string: self.card.imageURL ?? "")))
+                RemoteImageView(imageLoader: ImageLoader(url: URL(string: self.card.imageUrl ?? "")))
                 Text(self.card.name ?? "")
                     .font(.system(size: 18, weight: .semibold))
             }.contentShape(Rectangle())

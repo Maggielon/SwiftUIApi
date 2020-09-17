@@ -7,22 +7,24 @@
 //
 
 import SwiftUI
+import NetworkModule
 
 struct PokemonView: View {
     
-    var pokemon: Pokemon
+    var item: PokemonItem
     
     var body: some View {
         VStack {
-            FakeNavBar(label: pokemon.name)
+            FakeNavBar(label: item.name ?? "")
             Spacer()
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         }
     }
 }
 
-struct PokemonView_Previews: PreviewProvider {
-    static var previews: some View {
-        PokemonView(pokemon: Pokemon(name: "pokemon", url: "url"))
+extension PokemonItem: Identifiable {
+    
+    public var id: String {
+        return self.name ?? ""
     }
 }

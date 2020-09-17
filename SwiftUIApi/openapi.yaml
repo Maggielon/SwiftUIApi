@@ -150,7 +150,7 @@ paths:
         description: Offset for next page
         required: false
         schema:
-          type: string
+          type: integer
       servers:
       - url: https://pokeapi.co/api/v2/
       responses:
@@ -198,8 +198,6 @@ components:
           type: string
         name:
           type: string
-        text: 
-          type: string 
         nationalPokedexNumber:
           type: integer
         imageUrl:
@@ -216,7 +214,7 @@ components:
           enum: ["Energy", "Pokémon", "Trainer"]
         subtype: 
           type: string
-          enum: ["EX", "Special", "Restored", "Level Up", "MEGA", "Technical Machine", "Item", "Stadium", "Supporter", "Stage 1", "GX", "Pokémon Tool", "Basic", "LEGEND", "Stage 2", "BREAK", "Rocket's Secret Machine"]
+          enum: ["EX", "Special", "Restored", "Level Up", "MEGA", "Technical Machine", "Item", "Stadium", "Supporter", "Stage 1", "GX", "Pokémon Tool", "Basic", "LEGEND", "Stage 2", "BREAK", "Rocket's Secret Machine", ""]
         evolvesFrom: 
           type: string
         hp: 
