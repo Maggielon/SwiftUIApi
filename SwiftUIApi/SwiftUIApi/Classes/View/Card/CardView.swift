@@ -77,12 +77,3 @@ struct CardView: View {
         }
     }
 }
-
-extension Card: Identifiable { }
-
-extension Attack: Identifiable {
-    
-    public var id: String {
-        self.name ?? UUID().uuidString
-    }
-}

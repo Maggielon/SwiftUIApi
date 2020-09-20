@@ -36,3 +36,10 @@ struct SpritesView: View {
         }
     }
 }
+
+extension PokemonItem: Identifiable {
+    
+    public var id: String {
+        return self.name ?? UUID().uuidString
+    }
+}

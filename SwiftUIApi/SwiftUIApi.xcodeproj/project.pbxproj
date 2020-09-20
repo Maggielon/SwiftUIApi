@@ -19,6 +19,8 @@
 		5D58685D25179D92002FAC96 /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D58685C25179D92002FAC96 /* PokemonViewModel.swift */; };
 		5D58685F2517A6B8002FAC96 /* SpritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D58685E2517A6B8002FAC96 /* SpritesView.swift */; };
 		5D5868612517ABD6002FAC96 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5868602517ABD6002FAC96 /* CardViewModel.swift */; };
+		5D5868632517BDB8002FAC96 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5868622517BDB8002FAC96 /* PokemonCell.swift */; };
+		5D5868652517BDCB002FAC96 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5868642517BDCB002FAC96 /* CardCell.swift */; };
 		5D69372E25139D920024472E /* NetworkModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5D69372D25139D920024472E /* NetworkModule */; };
 		5D72F584250F94A100DC66BD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F583250F94A100DC66BD /* Extensions.swift */; };
 		5D72F586250FAD3800DC66BD /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F585250FAD3800DC66BD /* ContentViewModel.swift */; };
@@ -44,6 +46,8 @@
 		5D58685C25179D92002FAC96 /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
 		5D58685E2517A6B8002FAC96 /* SpritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpritesView.swift; sourceTree = "<group>"; };
 		5D5868602517ABD6002FAC96 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		5D5868622517BDB8002FAC96 /* PokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
+		5D5868642517BDCB002FAC96 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		5D693729251399660024472E /* NetworkModule */ = {isa = PBXFileReference; lastKnownFileType = text; name = NetworkModule; path = SwiftUIApi/NetworkModule; sourceTree = SOURCE_ROOT; };
 		5D72F583250F94A100DC66BD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5D72F585250FAD3800DC66BD /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 			children = (
 				5D7DBCA5250F796F00688E2C /* ContentView.swift */,
 				5D72F585250FAD3800DC66BD /* ContentViewModel.swift */,
+				5D5868622517BDB8002FAC96 /* PokemonCell.swift */,
+				5D5868642517BDCB002FAC96 /* CardCell.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -289,9 +295,11 @@
 				5D5868612517ABD6002FAC96 /* CardViewModel.swift in Sources */,
 				5D4B711E25124A7B00A8DC51 /* NavControllerViewModel.swift in Sources */,
 				5D4B710D251209C400A8DC51 /* CardView.swift in Sources */,
+				5D5868632517BDB8002FAC96 /* PokemonCell.swift in Sources */,
 				5D4B71072512053000A8DC51 /* RemoteImageView.swift in Sources */,
 				5D58685F2517A6B8002FAC96 /* SpritesView.swift in Sources */,
 				5D4B71152512458300A8DC51 /* NavControllerView.swift in Sources */,
+				5D5868652517BDCB002FAC96 /* CardCell.swift in Sources */,
 				5D4B71092512072400A8DC51 /* PokemonView.swift in Sources */,
 				5D4B711A251249CF00A8DC51 /* NavPopButton.swift in Sources */,
 				5D72F586250FAD3800DC66BD /* ContentViewModel.swift in Sources */,

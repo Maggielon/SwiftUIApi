@@ -52,6 +52,8 @@ struct PokemonView: View {
             HStack {
                 self.item(title: "Sprites: ", value: pokemon?.sprites?.name)
                 Spacer()
+                Text("Show")
+                    .foregroundColor(.blue)
                 Image(systemName: "chevron.right")
                     .frame(width: 20, height: 20)
                     .foregroundColor(.gray)
@@ -67,12 +69,5 @@ struct PokemonView: View {
             Text(value ?? "-")
                 .font(.system(size: 18, weight: .regular))
         }
-    }
-}
-
-extension PokemonItem: Identifiable {
-    
-    public var id: String {
-        return self.name ?? UUID().uuidString
     }
 }
