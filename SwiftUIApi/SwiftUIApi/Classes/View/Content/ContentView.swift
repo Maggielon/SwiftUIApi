@@ -20,10 +20,7 @@ struct ContentView: View {
     @ObservedObject var  viewModel = ContentViewModel()
     
     var body: some View {
-        NavControllerView(transition: .custom(
-            push: .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)),
-            pop: .asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
-        )) {
+        NavControllerView(transition: .custom(push: .slideIn, pop: .slideOut)) {
             VStack {
                 FakeNavBar(label: "Pokemon")
                 Picker(selection: self.$viewModel.selected, label: Text("Select")) {
@@ -63,7 +60,7 @@ struct ContentView: View {
         .edgesIgnoringSafeArea(.bottom)
         .onAppear() {
             self.viewModel.fetchCards()
-            //self.viewModel.fetchPokemons()
+            self.viewModel.fetchPokemons()
         }
     }
 }
@@ -77,9 +74,11 @@ struct PokemonCell: View {
         NavPushButton(destination: PokemonView(item: pokemon)) {
             HStack {
                 Text(self.pokemon.name?.capitalized ?? "")
-                .font(.system(size: 18, weight: .semibold))
+                    .font(.system(size: 18, weight: .semibold))
                 Spacer()
                 Image(systemName: "chevron.right")
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(.gray)
             }.contentShape(Rectangle())
         }
     }
@@ -90,12 +89,41 @@ struct CardCell: View {
     var card: Card
     
     var body: some View {
-        NavPushButton(destination: CardView(card: card)) {
+        NavPushButton(destination: CardView(id: card.id ?? "")) {
             HStack {
                 RemoteImageView(imageLoader: ImageLoader(url: URL(string: self.card.imageUrl ?? "")))
-                Text(self.card.name ?? "")
-                    .font(.system(size: 18, weight: .semibold))
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(self.card.name ?? "")
+                            .font(.system(size: 18, weight: .semibold))
+                        Text(self.card.nationalPokedexNumber != nil ? "(\(self.card.nationalPokedexNumber?.description ?? ""))" : "")
+                            .font(.system(size: 12, weight: .light))
+                    }
+                    self.detail(title: "Type: ", value: self.card.types?.compactMap { $0.rawValue }.joined(separator: ", "))
+                    self.detail(title: "Subtype: ", value: self.card.subtype?.rawValue)
+                    self.detail(title: "Supertype: ", value: self.card.supertype?.rawValue)
+                    self.detail(title: "Series: ", value: self.card.series)
+                    self.detail(title: "Set: ", value: self.card.setValue)
+                    self.detail(title: "HP: ", value: self.card.hp)
+                    self.detail(title: "Attacks: ", value: "\(self.card.attacks?.count ?? 0)")
+                    self.detail(title: "Weaknesses: ", value: "\(self.card.weaknesses?.count ?? 0)")
+                    Spacer()
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(.gray)
             }.contentShape(Rectangle())
+        }
+    }
+    
+    func detail(title: String, value: String?) -> some View {
+        HStack {
+            Text(title)
+                .font(.system(size: 12, weight: .light))
+                .foregroundColor(.gray)
+            Text(value ?? "-")
+                .font(.system(size: 14, weight: .regular))
         }
     }
 }

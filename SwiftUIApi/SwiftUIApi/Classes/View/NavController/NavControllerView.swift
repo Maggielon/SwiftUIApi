@@ -44,3 +44,15 @@ struct NavControllerView<Content>: View where Content: View {
     }
     
 }
+
+
+extension AnyTransition {
+    
+    static var slideIn: AnyTransition {
+        return .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
+    }
+    
+    static var slideOut: AnyTransition {
+        return .asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
+    }
+}

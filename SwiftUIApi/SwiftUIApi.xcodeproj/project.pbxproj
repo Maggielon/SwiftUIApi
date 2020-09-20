@@ -16,6 +16,9 @@
 		5D4B711A251249CF00A8DC51 /* NavPopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B7119251249CF00A8DC51 /* NavPopButton.swift */; };
 		5D4B711E25124A7B00A8DC51 /* NavControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B711D25124A7B00A8DC51 /* NavControllerViewModel.swift */; };
 		5D4B712025124A9B00A8DC51 /* FakeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B711F25124A9B00A8DC51 /* FakeNavBar.swift */; };
+		5D58685D25179D92002FAC96 /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D58685C25179D92002FAC96 /* PokemonViewModel.swift */; };
+		5D58685F2517A6B8002FAC96 /* SpritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D58685E2517A6B8002FAC96 /* SpritesView.swift */; };
+		5D5868612517ABD6002FAC96 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5868602517ABD6002FAC96 /* CardViewModel.swift */; };
 		5D69372E25139D920024472E /* NetworkModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5D69372D25139D920024472E /* NetworkModule */; };
 		5D72F584250F94A100DC66BD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F583250F94A100DC66BD /* Extensions.swift */; };
 		5D72F586250FAD3800DC66BD /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F585250FAD3800DC66BD /* ContentViewModel.swift */; };
@@ -38,9 +41,10 @@
 		5D4B7119251249CF00A8DC51 /* NavPopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPopButton.swift; sourceTree = "<group>"; };
 		5D4B711D25124A7B00A8DC51 /* NavControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavControllerViewModel.swift; sourceTree = "<group>"; };
 		5D4B711F25124A9B00A8DC51 /* FakeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNavBar.swift; sourceTree = "<group>"; };
+		5D58685C25179D92002FAC96 /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
+		5D58685E2517A6B8002FAC96 /* SpritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpritesView.swift; sourceTree = "<group>"; };
+		5D5868602517ABD6002FAC96 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		5D693729251399660024472E /* NetworkModule */ = {isa = PBXFileReference; lastKnownFileType = text; name = NetworkModule; path = SwiftUIApi/NetworkModule; sourceTree = SOURCE_ROOT; };
-		5D72F57F250F91E100DC66BD /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
-		5D72F581250F921000DC66BD /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		5D72F583250F94A100DC66BD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5D72F585250FAD3800DC66BD /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		5D72F587250FAFE100DC66BD /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
@@ -52,7 +56,6 @@
 		5D7DBCAA250F797200688E2C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5D7DBCAD250F797200688E2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D7DBCAF250F797200688E2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DDF9E5C2510C6F3008905D8 /* PokemonCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCardModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,34 @@
 				5D4B711F25124A9B00A8DC51 /* FakeNavBar.swift */,
 			);
 			path = NavController;
+			sourceTree = "<group>";
+		};
+		5D5868592517982B002FAC96 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				5D7DBCA5250F796F00688E2C /* ContentView.swift */,
+				5D72F585250FAD3800DC66BD /* ContentViewModel.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		5D58685A25179841002FAC96 /* Pokemon */ = {
+			isa = PBXGroup;
+			children = (
+				5D4B71082512072400A8DC51 /* PokemonView.swift */,
+				5D58685C25179D92002FAC96 /* PokemonViewModel.swift */,
+				5D58685E2517A6B8002FAC96 /* SpritesView.swift */,
+			);
+			path = Pokemon;
+			sourceTree = "<group>";
+		};
+		5D58685B25179847002FAC96 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				5D4B710C251209C400A8DC51 /* CardView.swift */,
+				5D5868602517ABD6002FAC96 /* CardViewModel.swift */,
+			);
+			path = Card;
 			sourceTree = "<group>";
 		};
 		5D69372A25139C470024472E /* Frameworks */ = {
@@ -145,32 +176,22 @@
 		5D7DBCB7250F79C300688E2C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5D7DBCB8250F79CC00688E2C /* Network */,
+				5D72F583250F94A100DC66BD /* Extensions.swift */,
 				5D7DBCBA250F79D800688E2C /* Model */,
 				5D7DBCB9250F79D200688E2C /* View */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		5D7DBCB8250F79CC00688E2C /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				5D72F581250F921000DC66BD /* API.swift */,
-				5D72F583250F94A100DC66BD /* Extensions.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		5D7DBCB9250F79D200688E2C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5D58685B25179847002FAC96 /* Card */,
+				5D58685A25179841002FAC96 /* Pokemon */,
+				5D5868592517982B002FAC96 /* Content */,
 				5D4B7116251249B000A8DC51 /* NavController */,
-				5D7DBCA5250F796F00688E2C /* ContentView.swift */,
-				5D72F585250FAD3800DC66BD /* ContentViewModel.swift */,
 				5D72F587250FAFE100DC66BD /* Spinner.swift */,
 				5D4B71062512053000A8DC51 /* RemoteImageView.swift */,
-				5D4B71082512072400A8DC51 /* PokemonView.swift */,
-				5D4B710C251209C400A8DC51 /* CardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,8 +199,6 @@
 		5D7DBCBA250F79D800688E2C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5D72F57F250F91E100DC66BD /* PokemonModel.swift */,
-				5DDF9E5C2510C6F3008905D8 /* PokemonCardModel.swift */,
 				5D4B710A2512093B00A8DC51 /* ImageLoader.swift */,
 			);
 			path = Model;
@@ -265,10 +284,13 @@
 				5D4B710B2512093B00A8DC51 /* ImageLoader.swift in Sources */,
 				5D7DBCA4250F796F00688E2C /* SceneDelegate.swift in Sources */,
 				5D4B712025124A9B00A8DC51 /* FakeNavBar.swift in Sources */,
+				5D58685D25179D92002FAC96 /* PokemonViewModel.swift in Sources */,
 				5D7DBCA6250F796F00688E2C /* ContentView.swift in Sources */,
+				5D5868612517ABD6002FAC96 /* CardViewModel.swift in Sources */,
 				5D4B711E25124A7B00A8DC51 /* NavControllerViewModel.swift in Sources */,
 				5D4B710D251209C400A8DC51 /* CardView.swift in Sources */,
 				5D4B71072512053000A8DC51 /* RemoteImageView.swift in Sources */,
+				5D58685F2517A6B8002FAC96 /* SpritesView.swift in Sources */,
 				5D4B71152512458300A8DC51 /* NavControllerView.swift in Sources */,
 				5D4B71092512072400A8DC51 /* PokemonView.swift in Sources */,
 				5D4B711A251249CF00A8DC51 /* NavPopButton.swift in Sources */,

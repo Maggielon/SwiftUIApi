@@ -10,7 +10,7 @@ import Foundation
 
 public struct PokemonSprites: Codable { 
 
-
+    public var name: String?
     public var frontDefault: String?
     public var frontShiny: String?
     public var frontFemale: String?
@@ -20,7 +20,8 @@ public struct PokemonSprites: Codable {
     public var backFemale: String?
     public var backShinyFemale: String?
 
-    public init(frontDefault: String?, frontShiny: String?, frontFemale: String?, frontShinyFemale: String?, backDefault: String?, backShiny: String?, backFemale: String?, backShinyFemale: String?) {
+    public init(name: String?, frontDefault: String?, frontShiny: String?, frontFemale: String?, frontShinyFemale: String?, backDefault: String?, backShiny: String?, backFemale: String?, backShinyFemale: String?) {
+        self.name = name
         self.frontDefault = frontDefault
         self.frontShiny = frontShiny
         self.frontFemale = frontFemale
@@ -31,7 +32,8 @@ public struct PokemonSprites: Codable {
         self.backShinyFemale = backShinyFemale
     }
 
-    public enum CodingKeys: String, CodingKey, CaseIterable { 
+    public enum CodingKeys: String, CodingKey, CaseIterable {
+        case name
         case frontDefault = "front_default"
         case frontShiny = "front_shiny"
         case frontFemale = "front_female"

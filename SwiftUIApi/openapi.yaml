@@ -100,7 +100,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Card'
+                $ref: '#/components/schemas/CardItem'
         400:
           description: We could not process that action
           content:
@@ -191,6 +191,11 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Card"
+    CardItem: 
+      type: object
+      properties:
+        card:
+          $ref: "#/components/schemas/Card"
     Card:
       type: object
       properties:

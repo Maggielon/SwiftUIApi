@@ -10,54 +10,6 @@ import Foundation
 import UIKit
 import SwiftUI
 
-protocol URLQueryParameterStringConvertible {
-    
-    var queryParameters: String { get }
-}
-
-extension Dictionary: URLQueryParameterStringConvertible {
-    
-    var queryParameters: String {
-        var parts: [String] = []
-        for (key, value) in self {
-            let part = String(
-                format: "%@=%@",
-                String(describing: key).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!,
-                String(describing: value).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-            )
-            parts.append(part as String)
-        }
-        return parts.joined(separator: "&")
-    }
-}
-
-extension URL {
-    
-    func appendinQueryParameters(_ parametersDictionary: Dictionary<String, Any>) -> URL {
-        let URLString: String = String(format: "%@?%@", self.absoluteString, parametersDictionary.queryParameters)
-        return URL(string: URLString)!
-    }
-}
-
-protocol JSONEncodable {
-    
-    func encodeToJSON() -> Any
-}
-
-extension Int: JSONEncodable {
-    
-    func encodeToJSON() -> Any {
-        return self as Any
-    }
-}
-
-extension String: JSONEncodable {
-    
-    func encodeToJSON() -> Any {
-        return self as Any
-    }
-}
-
 extension RandomAccessCollection where Self.Element: Identifiable {
     
     func isLastItem<Item: Identifiable>(_ item: Item) -> Bool {

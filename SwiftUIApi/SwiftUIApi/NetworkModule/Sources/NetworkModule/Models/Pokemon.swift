@@ -23,13 +23,11 @@ public struct Pokemon: Codable {
     public var moves: [PokemonMove]?
     public var name: String?
     public var order: Int?
-    public var species: PokemonSprites?
-    public var sprites: PokemonSpecies?
-    public var stats: PokemonStat?
-    public var types: PokemonType?
+    public var sprites: PokemonSprites?
+    public var species: PokemonSpecies?
     public var weight: Int?
 
-    public init(abilities: [PokemonAbility]?, baseExperience: Int?, forms: [PokemonForm]?, gameIndices: [VersionGameIndex]?, height: Int?, heldItems: [PokemonHeldItem]?, id: Int?, isDefault: Bool?, locationAreaEncounters: String?, moves: [PokemonMove]?, name: String?, order: Int?, species: PokemonSprites?, sprites: PokemonSpecies?, stats: PokemonStat?, types: PokemonType?, weight: Int?) {
+    public init(abilities: [PokemonAbility]?, baseExperience: Int?, forms: [PokemonForm]?, gameIndices: [VersionGameIndex]?, height: Int?, heldItems: [PokemonHeldItem]?, id: Int?, isDefault: Bool?, locationAreaEncounters: String?, moves: [PokemonMove]?, name: String?, order: Int?, species: PokemonSpecies?, sprites: PokemonSprites?, weight: Int?) {
         self.abilities = abilities
         self.baseExperience = baseExperience
         self.forms = forms
@@ -44,8 +42,6 @@ public struct Pokemon: Codable {
         self.order = order
         self.species = species
         self.sprites = sprites
-        self.stats = stats
-        self.types = types
         self.weight = weight
     }
 
@@ -64,8 +60,6 @@ public struct Pokemon: Codable {
         case order
         case species
         case sprites
-        case stats
-        case types
         case weight
     }
 

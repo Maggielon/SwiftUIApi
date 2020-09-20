@@ -17,7 +17,7 @@ open class CardsIdAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getCardById(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Card?,_ error: Error?) -> Void)) {
+    open class func getCardById(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CardItem?,_ error: Error?) -> Void)) {
         getCardByIdWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -32,9 +32,9 @@ open class CardsIdAPI {
      Returns a specific card by id
      - GET /cards/{id}
      - parameter id: (path) Card id 
-     - returns: RequestBuilder<Card> 
+     - returns: RequestBuilder<CardItem>
      */
-    open class func getCardByIdWithRequestBuilder(id: String) -> RequestBuilder<Card> {
+    open class func getCardByIdWithRequestBuilder(id: String) -> RequestBuilder<CardItem> {
         var path = "/cards/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -44,7 +44,7 @@ open class CardsIdAPI {
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Card>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<CardItem>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
