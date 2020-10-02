@@ -8,14 +8,18 @@
 
 import SwiftUI
 
-struct FakeNavBar: View {
+public struct FakeNavBar: View {
     
     @EnvironmentObject private var viewModel: NavControllerViewModel
     
     let label: String
     //let backAction: ()->Void
     
-    var body: some View {
+    public init(label: String) {
+        self.label = label
+    }
+    
+    public var body: some View {
         ZStack {
             HStack {
                 if viewModel.currentScreen != nil {

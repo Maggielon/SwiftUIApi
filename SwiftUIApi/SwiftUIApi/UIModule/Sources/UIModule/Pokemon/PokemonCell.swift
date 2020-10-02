@@ -7,16 +7,21 @@
 //
 
 import SwiftUI
-import NetworkModule
 
-struct PokemonCell: View {
+public struct PokemonCell<Destination>: View where Destination: View {
     
-    var pokemon: PokemonItem
+    private let name: String
+    private let destination: Destination
     
-    var body: some View {
-        NavPushButton(destination: PokemonView(item: pokemon)) {
+    public init(name: String, destination: Destination) {
+        self.name = name
+        self.destination = destination
+    }
+    
+    public var body: some View {
+        NavPushButton(destination: destination) {
             HStack {
-                Text(self.pokemon.name?.capitalized ?? "")
+                Text(self.name.capitalized)
                     .font(.system(size: 18, weight: .semibold))
                 Spacer()
                 Image(systemName: "chevron.right")

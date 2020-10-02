@@ -10,14 +10,14 @@ import Foundation
 import SwiftUI
 import Combine
 
-struct NavControllerView<Content>: View where Content: View {
+public struct NavControllerView<Content>: View where Content: View {
     
     @ObservedObject private var viewModel: NavControllerViewModel
     
     private let content: Content
     private let transition: (push: AnyTransition, pop: AnyTransition)
     
-    init(transition: NavTransiton, easing: Animation = .easeOut(duration: 0.33), @ViewBuilder content: @escaping () -> Content) {
+    public init(transition: NavTransiton, easing: Animation = .easeOut(duration: 0.33), @ViewBuilder content: @escaping () -> Content) {
         self.viewModel = NavControllerViewModel(easing: easing)
         self.content = content()
         switch transition {
@@ -28,7 +28,7 @@ struct NavControllerView<Content>: View where Content: View {
         }
     }
     
-    var body: some View {
+    public var body: some View {
         let isRoot = viewModel.currentScreen == nil
         return ZStack {
             if isRoot {
@@ -46,7 +46,7 @@ struct NavControllerView<Content>: View where Content: View {
 }
 
 
-extension AnyTransition {
+public extension AnyTransition {
     
     static var slideIn: AnyTransition {
         return .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))

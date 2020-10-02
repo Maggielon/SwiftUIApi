@@ -8,6 +8,7 @@
 
 import SwiftUI
 import NetworkModule
+import UIModule
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -32,7 +33,7 @@ struct ContentView: View {
                     Section {
                         if self.viewModel.selected == 0 {
                             ForEach(self.viewModel.state.cards) { card in
-                                CardCell(card: card)
+                                CardCell(card: card, destination: CardView(id: card.id ?? ""))
                                     .onAppear() {
                                         if self.viewModel.state.cards.isLastItem(card) {
                                             self.viewModel.fetchCards()
@@ -41,7 +42,7 @@ struct ContentView: View {
                             }
                         } else {
                             ForEach(self.viewModel.state.pokemons) { pokemon in
-                                PokemonCell(pokemon: pokemon)
+                                PokemonCell(name: pokemon.name ?? "", destination: PokemonView(item: pokemon))
                                     .onAppear() {
                                         if self.viewModel.state.pokemons.isLastItem(pokemon) {
                                             self.viewModel.fetchPokemons()

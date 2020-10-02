@@ -10,17 +10,17 @@ import SwiftUI
 
 // MARK: - Structs & Enums
 
-enum NavTransiton {
+public enum NavTransiton {
     case none
     case custom(push: AnyTransition, pop: AnyTransition)
 }
 
-enum NavType {
+public enum NavType {
     case push
     case pop
 }
 
-enum PopDestination {
+public enum PopDestination {
     case previous
     case root
 }

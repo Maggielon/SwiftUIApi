@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 import Combine
 
-class ImageLoader: ObservableObject {
+public class ImageLoader: ObservableObject {
     
     @Published var image: UIImage?
     
     private var cancellable: AnyCancellable?
     
-    init(url: URL?, placeholderImage: UIImage? = UIImage(color: .lightGray)) {
+    public init(url: URL?, placeholderImage: UIImage? = UIImage(color: .lightGray)) {
         guard let url = url else { return }
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
             .map { UIImage(data: $0.data) }

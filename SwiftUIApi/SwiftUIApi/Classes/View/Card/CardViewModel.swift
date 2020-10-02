@@ -9,15 +9,18 @@
 import Foundation
 import Combine
 import NetworkModule
+import CoreModule
 
 final class CardViewModel: ObservableObject {
 
     @Published private(set) var card: Card?
     
     private var subscriptions = Set<AnyCancellable>()
+    
+    private let networkSerivice: INetworkService? = ServiceLocator.shared.getService(type: INetworkService.self)
 
     func fetchCard(with id: String) {
-        CardsIdAPI.getCardById(id: id, completion: onReceive)
+        networkSerivice?.get(type: .card, params: ["id": id], completion: onReceive)
     }
     
     private func onReceive(_ card: CardItem?, _ error: Error?) {
@@ -27,13 +30,8 @@ final class CardViewModel: ObservableObject {
             self.card = nil
         }
     }
-}
-
-extension Card: Identifiable { }
-
-extension Attack: Identifiable {
     
-    public var id: String {
-        self.name ?? UUID().uuidString
+    func cardTypeString() -> String {
+        self.card?.types?.compactMap { $0.rawValue }.joined(separator: ", ") ?? ""
     }
 }

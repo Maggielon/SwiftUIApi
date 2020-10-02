@@ -8,11 +8,15 @@
 
 import SwiftUI
 
-struct RemoteImageView: View {
+public struct RemoteImageView: View {
     
     @ObservedObject var imageLoader: ImageLoader
     
-    var body: some View {
+    public init(imageLoader: ImageLoader) {
+        self.imageLoader = imageLoader
+    }
+    
+    public var body: some View {
         Image(uiImage: self.imageLoader.image ?? UIImage(color: .lightGray)!)
             .resizable()
             .scaledToFit()

@@ -7,51 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D4B71072512053000A8DC51 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B71062512053000A8DC51 /* RemoteImageView.swift */; };
 		5D4B71092512072400A8DC51 /* PokemonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B71082512072400A8DC51 /* PokemonView.swift */; };
-		5D4B710B2512093B00A8DC51 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B710A2512093B00A8DC51 /* ImageLoader.swift */; };
 		5D4B710D251209C400A8DC51 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B710C251209C400A8DC51 /* CardView.swift */; };
-		5D4B71152512458300A8DC51 /* NavControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B71142512458300A8DC51 /* NavControllerView.swift */; };
-		5D4B7118251249C000A8DC51 /* NavPushButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B7117251249C000A8DC51 /* NavPushButton.swift */; };
-		5D4B711A251249CF00A8DC51 /* NavPopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B7119251249CF00A8DC51 /* NavPopButton.swift */; };
-		5D4B711E25124A7B00A8DC51 /* NavControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B711D25124A7B00A8DC51 /* NavControllerViewModel.swift */; };
-		5D4B712025124A9B00A8DC51 /* FakeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B711F25124A9B00A8DC51 /* FakeNavBar.swift */; };
 		5D58685D25179D92002FAC96 /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D58685C25179D92002FAC96 /* PokemonViewModel.swift */; };
 		5D58685F2517A6B8002FAC96 /* SpritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D58685E2517A6B8002FAC96 /* SpritesView.swift */; };
 		5D5868612517ABD6002FAC96 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5868602517ABD6002FAC96 /* CardViewModel.swift */; };
-		5D5868632517BDB8002FAC96 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5868622517BDB8002FAC96 /* PokemonCell.swift */; };
-		5D5868652517BDCB002FAC96 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5868642517BDCB002FAC96 /* CardCell.swift */; };
 		5D69372E25139D920024472E /* NetworkModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5D69372D25139D920024472E /* NetworkModule */; };
 		5D72F584250F94A100DC66BD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F583250F94A100DC66BD /* Extensions.swift */; };
 		5D72F586250FAD3800DC66BD /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F585250FAD3800DC66BD /* ContentViewModel.swift */; };
-		5D72F588250FAFE100DC66BD /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D72F587250FAFE100DC66BD /* Spinner.swift */; };
 		5D7DBCA2250F796F00688E2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DBCA1250F796F00688E2C /* AppDelegate.swift */; };
 		5D7DBCA4250F796F00688E2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DBCA3250F796F00688E2C /* SceneDelegate.swift */; };
 		5D7DBCA6250F796F00688E2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DBCA5250F796F00688E2C /* ContentView.swift */; };
 		5D7DBCA8250F797200688E2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D7DBCA7250F797200688E2C /* Assets.xcassets */; };
 		5D7DBCAB250F797200688E2C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D7DBCAA250F797200688E2C /* Preview Assets.xcassets */; };
 		5D7DBCAE250F797200688E2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D7DBCAC250F797200688E2C /* LaunchScreen.storyboard */; };
+		5D7E4E2E25246D9F001F8E36 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7E4E2D25246D9F001F8E36 /* NetworkService.swift */; };
+		5D7E4E5225247C33001F8E36 /* UIModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5D7E4E5125247C33001F8E36 /* UIModule */; };
+		5DD4AD792527C63C0071BEEE /* CoreModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5DD4AD782527C63C0071BEEE /* CoreModule */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5D4B71062512053000A8DC51 /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		5D4B71082512072400A8DC51 /* PokemonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonView.swift; sourceTree = "<group>"; };
-		5D4B710A2512093B00A8DC51 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		5D4B710C251209C400A8DC51 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		5D4B71142512458300A8DC51 /* NavControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavControllerView.swift; sourceTree = "<group>"; };
-		5D4B7117251249C000A8DC51 /* NavPushButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPushButton.swift; sourceTree = "<group>"; };
-		5D4B7119251249CF00A8DC51 /* NavPopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPopButton.swift; sourceTree = "<group>"; };
-		5D4B711D25124A7B00A8DC51 /* NavControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavControllerViewModel.swift; sourceTree = "<group>"; };
-		5D4B711F25124A9B00A8DC51 /* FakeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNavBar.swift; sourceTree = "<group>"; };
 		5D58685C25179D92002FAC96 /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
 		5D58685E2517A6B8002FAC96 /* SpritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpritesView.swift; sourceTree = "<group>"; };
 		5D5868602517ABD6002FAC96 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
-		5D5868622517BDB8002FAC96 /* PokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
-		5D5868642517BDCB002FAC96 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		5D693729251399660024472E /* NetworkModule */ = {isa = PBXFileReference; lastKnownFileType = text; name = NetworkModule; path = SwiftUIApi/NetworkModule; sourceTree = SOURCE_ROOT; };
 		5D72F583250F94A100DC66BD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5D72F585250FAD3800DC66BD /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
-		5D72F587250FAFE100DC66BD /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		5D7DBC9E250F796F00688E2C /* SwiftUIApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D7DBCA1250F796F00688E2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D7DBCA3250F796F00688E2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +43,9 @@
 		5D7DBCAA250F797200688E2C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5D7DBCAD250F797200688E2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D7DBCAF250F797200688E2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D7E4E2D25246D9F001F8E36 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		5D7E4E5025247C26001F8E36 /* UIModule */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UIModule; sourceTree = "<group>"; };
+		5DD4AD772527C6180071BEEE /* CoreModule */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CoreModule; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D7E4E5225247C33001F8E36 /* UIModule in Frameworks */,
+				5DD4AD792527C63C0071BEEE /* CoreModule in Frameworks */,
 				5D69372E25139D920024472E /* NetworkModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,25 +62,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5D4B7116251249B000A8DC51 /* NavController */ = {
-			isa = PBXGroup;
-			children = (
-				5D4B71142512458300A8DC51 /* NavControllerView.swift */,
-				5D4B7117251249C000A8DC51 /* NavPushButton.swift */,
-				5D4B7119251249CF00A8DC51 /* NavPopButton.swift */,
-				5D4B711D25124A7B00A8DC51 /* NavControllerViewModel.swift */,
-				5D4B711F25124A9B00A8DC51 /* FakeNavBar.swift */,
-			);
-			path = NavController;
-			sourceTree = "<group>";
-		};
 		5D5868592517982B002FAC96 /* Content */ = {
 			isa = PBXGroup;
 			children = (
 				5D7DBCA5250F796F00688E2C /* ContentView.swift */,
 				5D72F585250FAD3800DC66BD /* ContentViewModel.swift */,
-				5D5868622517BDB8002FAC96 /* PokemonCell.swift */,
-				5D5868642517BDCB002FAC96 /* CardCell.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -102,7 +76,6 @@
 			children = (
 				5D4B71082512072400A8DC51 /* PokemonView.swift */,
 				5D58685C25179D92002FAC96 /* PokemonViewModel.swift */,
-				5D58685E2517A6B8002FAC96 /* SpritesView.swift */,
 			);
 			path = Pokemon;
 			sourceTree = "<group>";
@@ -143,10 +116,13 @@
 		5D7DBCA0250F796F00688E2C /* SwiftUIApi */ = {
 			isa = PBXGroup;
 			children = (
+				5D7E4E2A25246D16001F8E36 /* Core */,
 				5D7DBCB5250F797700688E2C /* Application */,
 				5D7DBCB6250F79A000688E2C /* Supporting */,
 				5D7DBCB7250F79C300688E2C /* Classes */,
+				5DD4AD772527C6180071BEEE /* CoreModule */,
 				5D693729251399660024472E /* NetworkModule */,
+				5D7E4E5025247C26001F8E36 /* UIModule */,
 				5D7DBCA9250F797200688E2C /* Preview Content */,
 			);
 			path = SwiftUIApi;
@@ -183,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				5D72F583250F94A100DC66BD /* Extensions.swift */,
-				5D7DBCBA250F79D800688E2C /* Model */,
 				5D7DBCB9250F79D200688E2C /* View */,
 			);
 			path = Classes;
@@ -192,22 +167,28 @@
 		5D7DBCB9250F79D200688E2C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5DD4AD762527C5740071BEEE /* Sprites */,
 				5D58685B25179847002FAC96 /* Card */,
 				5D58685A25179841002FAC96 /* Pokemon */,
 				5D5868592517982B002FAC96 /* Content */,
-				5D4B7116251249B000A8DC51 /* NavController */,
-				5D72F587250FAFE100DC66BD /* Spinner.swift */,
-				5D4B71062512053000A8DC51 /* RemoteImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		5D7DBCBA250F79D800688E2C /* Model */ = {
+		5D7E4E2A25246D16001F8E36 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				5D4B710A2512093B00A8DC51 /* ImageLoader.swift */,
+				5D7E4E2D25246D9F001F8E36 /* NetworkService.swift */,
 			);
-			path = Model;
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5DD4AD762527C5740071BEEE /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				5D58685E2517A6B8002FAC96 /* SpritesView.swift */,
+			);
+			path = Sprites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +209,8 @@
 			name = SwiftUIApi;
 			packageProductDependencies = (
 				5D69372D25139D920024472E /* NetworkModule */,
+				5D7E4E5125247C33001F8E36 /* UIModule */,
+				5DD4AD782527C63C0071BEEE /* CoreModule */,
 			);
 			productName = SwiftUIApi;
 			productReference = 5D7DBC9E250F796F00688E2C /* SwiftUIApi.app */;
@@ -284,26 +267,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D4B7118251249C000A8DC51 /* NavPushButton.swift in Sources */,
+				5D7E4E2E25246D9F001F8E36 /* NetworkService.swift in Sources */,
 				5D7DBCA2250F796F00688E2C /* AppDelegate.swift in Sources */,
 				5D72F584250F94A100DC66BD /* Extensions.swift in Sources */,
-				5D4B710B2512093B00A8DC51 /* ImageLoader.swift in Sources */,
 				5D7DBCA4250F796F00688E2C /* SceneDelegate.swift in Sources */,
-				5D4B712025124A9B00A8DC51 /* FakeNavBar.swift in Sources */,
 				5D58685D25179D92002FAC96 /* PokemonViewModel.swift in Sources */,
 				5D7DBCA6250F796F00688E2C /* ContentView.swift in Sources */,
 				5D5868612517ABD6002FAC96 /* CardViewModel.swift in Sources */,
-				5D4B711E25124A7B00A8DC51 /* NavControllerViewModel.swift in Sources */,
 				5D4B710D251209C400A8DC51 /* CardView.swift in Sources */,
-				5D5868632517BDB8002FAC96 /* PokemonCell.swift in Sources */,
-				5D4B71072512053000A8DC51 /* RemoteImageView.swift in Sources */,
 				5D58685F2517A6B8002FAC96 /* SpritesView.swift in Sources */,
-				5D4B71152512458300A8DC51 /* NavControllerView.swift in Sources */,
-				5D5868652517BDCB002FAC96 /* CardCell.swift in Sources */,
 				5D4B71092512072400A8DC51 /* PokemonView.swift in Sources */,
-				5D4B711A251249CF00A8DC51 /* NavPopButton.swift in Sources */,
 				5D72F586250FAD3800DC66BD /* ContentViewModel.swift in Sources */,
-				5D72F588250FAFE100DC66BD /* Spinner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +476,14 @@
 		5D69372D25139D920024472E /* NetworkModule */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NetworkModule;
+		};
+		5D7E4E5125247C33001F8E36 /* UIModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UIModule;
+		};
+		5DD4AD782527C63C0071BEEE /* CoreModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreModule;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

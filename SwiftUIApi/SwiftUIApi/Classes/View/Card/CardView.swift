@@ -8,6 +8,7 @@
 
 import SwiftUI
 import NetworkModule
+import UIModule
 
 struct CardView: View {
     
@@ -20,42 +21,23 @@ struct CardView: View {
             FakeNavBar(label: self.viewModel.card?.name ?? "Card")
             if self.viewModel.card != nil {
                 VStack {
-                    RemoteImageView(imageLoader: ImageLoader(url: URL(string: self.viewModel.card?.imageUrl ?? "")))
-                    HStack {
-                        Text(self.viewModel.card?.supertype?.rawValue ?? "")
-                            .foregroundColor(.gray)
-                        Text(self.viewModel.card?.subtype?.rawValue ?? "")
-                            .foregroundColor(.gray)
-                        Text("HP \(self.viewModel.card?.hp ?? "")")
-                            .font(.system(size: 14, weight: .light))
-                        
-                    }
-                    Text(self.viewModel.card?.types?.compactMap { $0.rawValue}.joined(separator: ", ") ?? "")
-                    ForEach(self.viewModel.card?.attacks ?? []) { attack in
-                        VStack {
-                            HStack {
-                                Text(attack.name ?? "")
-                                    .font(.system(size: 16, weight: .regular))
-                                Divider()
-                                Text(attack.damage ?? "")
-                                    .font(.system(size: 16, weight: .regular))
-                            }.frame(height: 30)
-                            Text(attack.text ?? "")
-                                .multilineTextAlignment(.center)
-                                .lineLimit(nil)
-                                .font(.system(size: 14, weight: .light))
-                        }
-                    }
-                    HStack {
-                        detail(name: "weakness", value: self.viewModel.card?.weaknesses?.compactMap { "\($0.type ?? "") \($0.value ?? "")" }.joined(separator: ", "))
-                        detail(name: "resistance", value: self.viewModel.card?.resistances?.compactMap { "\($0.type ?? "") \($0.value ?? "")" }.joined(separator: ", "))
-                        detail(name: "retreat cost", value: self.viewModel.card?.retreatCost?.joined(separator: ", "))
-                    }.padding(.vertical, 20)
-                    HStack {
-                        detail(name: "artist", value: self.viewModel.card?.artist)
-                        detail(name: "rarity", value: self.viewModel.card?.rarity)
-                        detail(name: "set", value: self.viewModel.card?.setValue)
-                    }
+                    CardTitleView(
+                        imageUrl: self.viewModel.card?.imageUrl,
+                        supertype: self.viewModel.card?.supertype?.rawValue,
+                        subtype: self.viewModel.card?.subtype?.rawValue,
+                        hp: self.viewModel.card?.hp,
+                        types: self.viewModel.cardTypeString()
+                    )
+                    CardMainView(attacks: self.viewModel.card?.attacks ?? [])
+                    CardDetailsView(
+                        artist: self.viewModel.card?.artist,
+                        rarity: self.viewModel.card?.rarity,
+                        setValue: self.viewModel.card?.setValue,
+                        weaknesses: self.viewModel.card?.weaknesses,
+                        resistances: self.viewModel.card?.resistances,
+                        retreatCost: self.viewModel.card?.retreatCost
+                    )
+                    
                 }.padding(.horizontal, 20)
             } else {
                 Spinner(style: .large)
@@ -64,16 +46,6 @@ struct CardView: View {
             Spacer()
         }.onAppear {
             self.viewModel.fetchCard(with: self.id)
-        }
-    }
-    
-    func detail(name: String, value: String?) -> some View {
-        VStack {
-            Text(name.uppercased())
-                .font(.system(size: 14, weight: .light))
-                .foregroundColor(.gray)
-            Text(value ?? "N/A")
-                .font(.system(size: 16, weight: .regular))
         }
     }
 }

@@ -8,19 +8,19 @@
 
 import SwiftUI
 
-struct NavPopButton<Label>: View where Label: View {
+public struct NavPopButton<Label>: View where Label: View {
     
     @EnvironmentObject private var viewModel: NavControllerViewModel
     
     private let destination: PopDestination
     private let label: Label
     
-    init(destination: PopDestination, @ViewBuilder label: @escaping () -> Label) {
+    public init(destination: PopDestination, @ViewBuilder label: @escaping () -> Label) {
         self.destination = destination
         self.label = label()
     }
     
-    var body: some View {
+    public var body: some View {
         label.onTapGesture {
             self.pop()
         }

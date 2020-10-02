@@ -9,17 +9,21 @@
 import SwiftUI
 import UIKit
 
-struct Spinner: UIViewRepresentable {
+public struct Spinner: UIViewRepresentable {
     let style: UIActivityIndicatorView.Style
+    
+    public init(style: UIActivityIndicatorView.Style) {
+        self.style = style
+    }
 
-    func makeUIView(context: Context) -> UIActivityIndicatorView {
+    public func makeUIView(context: Context) -> UIActivityIndicatorView {
         let spinner = UIActivityIndicatorView(style: style)
         spinner.hidesWhenStopped = true
         spinner.startAnimating()
         return spinner
     }
     
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {}
+    public func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {}
 }
 
 struct Spinner_Previews: PreviewProvider {

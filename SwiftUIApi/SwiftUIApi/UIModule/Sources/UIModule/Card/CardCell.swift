@@ -9,12 +9,18 @@
 import SwiftUI
 import NetworkModule
 
-struct CardCell: View {
+public struct CardCell<Destination>: View where Destination: View {
     
-    var card: Card
+    private let card: Card
+    private let destination: Destination
     
-    var body: some View {
-        NavPushButton(destination: CardView(id: card.id ?? "")) {
+    public init(card: Card, destination: Destination) {
+        self.card = card
+        self.destination = destination
+    }
+    
+    public var body: some View {
+        NavPushButton(destination: destination) {
             HStack {
                 RemoteImageView(imageLoader: ImageLoader(url: URL(string: self.card.imageUrl ?? "")))
                 VStack(alignment: .leading) {
@@ -42,7 +48,7 @@ struct CardCell: View {
         }
     }
     
-    func detail(title: String, value: String?) -> some View {
+    private func detail(title: String, value: String?) -> some View {
         HStack {
             Text(title)
                 .font(.system(size: 12, weight: .light))

@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import CoreModule
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -22,6 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
         
+        registServices()
+        
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
@@ -29,6 +32,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+    }
+    
+    func registServices() {
+        ServiceLocator.shared.addService(service: NetworkService() as INetworkService)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
