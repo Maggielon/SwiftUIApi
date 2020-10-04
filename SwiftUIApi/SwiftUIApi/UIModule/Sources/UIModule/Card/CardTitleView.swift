@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct CardTitleView: View {
     
-    private let imageUrl: String?
+    private let imageUrl: URL
     
     private let supertype: String?
     
@@ -20,8 +20,8 @@ public struct CardTitleView: View {
     
     private let types: String
     
-    public init(imageUrl: String?, supertype: String?, subtype: String?, hp: String?, types: String) {
-        self.imageUrl = imageUrl
+    public init(imageUrl: URL?, supertype: String?, subtype: String?, hp: String?, types: String) {
+        self.imageUrl = imageUrl ?? URL(string: "https://pokemontcg.io/static/media/logo.a09cc1c3.png")!
         self.supertype = supertype
         self.subtype = subtype
         self.hp = hp
@@ -30,7 +30,7 @@ public struct CardTitleView: View {
     
     public var body: some View {
         VStack {
-            RemoteImageView(imageLoader: ImageLoader(url: URL(string: imageUrl ?? "")))
+            RemoteImage(url: imageUrl)
             HStack {
                 Text(supertype ?? "")
                     .foregroundColor(.gray)
@@ -41,11 +41,5 @@ public struct CardTitleView: View {
             }
             Text(types)
         }
-    }
-}
-
-struct CardTitleView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardTitleView(imageUrl: "www.any.com", supertype: "supertype", subtype: "subtype",  hp: "100", types: "type1, type2")
     }
 }

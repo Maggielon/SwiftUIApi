@@ -22,7 +22,7 @@ struct CardView: View {
             if self.viewModel.card != nil {
                 VStack {
                     CardTitleView(
-                        imageUrl: self.viewModel.card?.imageUrl,
+                        imageUrl: self.viewModel.card?.imageURL,
                         supertype: self.viewModel.card?.supertype?.rawValue,
                         subtype: self.viewModel.card?.subtype?.rawValue,
                         hp: self.viewModel.card?.hp,

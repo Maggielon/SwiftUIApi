@@ -22,7 +22,7 @@ public struct CardCell<Destination>: View where Destination: View {
     public var body: some View {
         NavPushButton(destination: destination) {
             HStack {
-                RemoteImageView(imageLoader: ImageLoader(url: URL(string: self.card.imageUrl ?? "")))
+                RemoteImage(url: self.card.imageURL)
                 VStack(alignment: .leading) {
                     HStack {
                         Text(self.card.name ?? "")

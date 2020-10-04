@@ -16,6 +16,8 @@ struct SpritesView: View {
     
     var name: String = ""
     
+    var defaultURL: URL = URL(string: "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png")!
+    
     var body: some View {
         VStack {
             FakeNavBar(label: name + " sprites")
@@ -25,12 +27,12 @@ struct SpritesView: View {
             }
             VStack {
                 HStack {
-                    RemoteImageView(imageLoader: ImageLoader(url: URL(string: sprites?.backDefault ?? "")))
-                    RemoteImageView(imageLoader: ImageLoader(url: URL(string: sprites?.frontDefault ?? "")))
+                    RemoteImage(url: URL(string: sprites?.backDefault ?? "") ?? self.defaultURL)
+                    RemoteImage(url: URL(string: sprites?.frontDefault ?? "") ?? self.defaultURL)
                 }
                 HStack {
-                    RemoteImageView(imageLoader: ImageLoader(url: URL(string: sprites?.backShiny ?? "")))
-                    RemoteImageView(imageLoader: ImageLoader(url: URL(string: sprites?.frontShiny ?? "")))
+                    RemoteImage(url: URL(string: sprites?.backShiny ?? "") ?? self.defaultURL)
+                    RemoteImage(url: URL(string: sprites?.frontShiny ?? "") ?? self.defaultURL)
                 }
             }
             Spacer()

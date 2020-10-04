@@ -15,3 +15,10 @@ extension Attack: Identifiable {
 }
 
 extension Card: Identifiable { }
+
+extension Card {
+    
+    public var imageURL: URL {
+        return URL(string: self.imageUrl ?? "") ?? URL(string: "https://pokemontcg.io/static/media/logo.a09cc1c3.png")!
+    }
+}
