@@ -21,9 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
         
         registServices()
+        
+        let contentView = ContentView()
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -35,7 +36,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func registServices() {
-        ServiceLocator.shared.addService(service: NetworkService() as INetworkService)
+        ServiceLocator.shared.addService(service: Cache() as ICache)
+        ServiceLocator.shared.addService(service: CardNetworkService(cache: ServiceLocator.shared.getService(type: ICache.self)) as ICardNetworkService)
+        ServiceLocator.shared.addService(service: PokemonNetworkService(cache: ServiceLocator.shared.getService(type: ICache.self)) as IPokemonNetworkService)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

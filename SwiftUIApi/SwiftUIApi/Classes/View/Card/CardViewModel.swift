@@ -17,18 +17,23 @@ final class CardViewModel: ObservableObject {
     
     private var subscriptions = Set<AnyCancellable>()
     
-    private let networkSerivice: INetworkService? = ServiceLocator.shared.getService(type: INetworkService.self)
+    private let networkSerivice = ServiceLocator.shared.getService(type: ICardNetworkService.self)
 
     func fetchCard(with id: String) {
-        networkSerivice?.get(type: .card, params: ["id": id], completion: onReceive)
-    }
-    
-    private func onReceive(_ card: CardItem?, _ error: Error?) {
-        if let card = card {
-            self.card = card.card
-        } else {
-            self.card = nil
-        }
+        networkSerivice?.getCard(id: id)
+        .sink(
+            receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure:
+                    self.card = nil
+                }
+            },
+            receiveValue: { card in
+                self.card = card.card
+            }
+        ).store(in: &subscriptions)
     }
     
     func cardTypeString() -> String {

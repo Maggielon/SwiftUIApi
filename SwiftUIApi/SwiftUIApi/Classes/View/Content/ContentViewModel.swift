@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import NetworkModule
+import CoreModule
 
 final class ContentViewModel: ObservableObject {
     
@@ -28,35 +29,63 @@ final class ContentViewModel: ObservableObject {
     
     private var subscriptions = Set<AnyCancellable>()
     
+    private let cardNS = ServiceLocator.shared.getService(type: ICardNetworkService.self)
+    private let pokemonNS = ServiceLocator.shared.getService(type: IPokemonNetworkService.self)
+    
+    func fetchOnAppear() {
+        self.resetState()
+        self.fetchPokemons()
+        self.fetchCards()
+    }
+    
+    private func resetState() {
+        self.state.pokemons = []
+        self.state.cards = []
+        self.state.offset = 0
+        self.state.cardPage = 1
+        self.state.canLoadNextPage = true
+        self.state.canLoadCardNextPage = true
+    }
+    
     // MARK: Pokemons
     
     func fetchPokemons() {
-        PokemonAPI.getPokemonList(limit: state.limit, offset: state.offset, completion: onReceive)
-    }
-    
-    private func onReceive(_ list: PokemonList?, _ error: Error?) {
-        if let list = list {
-            state.pokemons += list.results ?? []
-            state.offset += state.limit
-            state.canLoadNextPage = true
-        } else if error != nil {
-            state.canLoadNextPage = false
-        }
+        pokemonNS?.getList(limit: state.limit, offset: state.offset)
+        .sink(
+            receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure:
+                    self.state.canLoadNextPage = false
+                }
+            },
+            receiveValue: { list in
+                self.state.pokemons += list.results ?? []
+                self.state.offset += self.state.limit
+                self.state.canLoadNextPage = true
+            }
+        ).store(in: &subscriptions)
     }
     
     // MARK: Cards
     
     func fetchCards() {
-        CardsAPI.getAllCards(page: state.cardPage, pageSize: state.limit, completion: onReceiveCard)
-    }
-    
-    private func onReceiveCard(_ list: CardsList?, _ error: Error?) {
-        if let list = list {
-            state.cards += list.cards ?? []
-            state.cardPage += 1
-            state.canLoadCardNextPage = true
-        } else if error != nil {
-            state.canLoadCardNextPage = false
-        }
+        cardNS?.getCards(page: state.cardPage, size: state.limit)
+        .sink(
+            receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure:
+                    self.state.canLoadCardNextPage = false
+                }
+            },
+            receiveValue: { list in
+                self.state.cards += list.cards ?? []
+                self.state.cardPage += 1
+                self.state.canLoadCardNextPage = true
+            }
+        ).store(in: &subscriptions)
     }
 }

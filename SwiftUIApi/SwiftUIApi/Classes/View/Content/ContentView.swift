@@ -24,6 +24,9 @@ struct ContentView: View {
         NavControllerView(transition: .custom(push: .slideIn, pop: .slideOut)) {
             VStack {
                 FakeNavBar(label: "Pokemon")
+                .onAppear() {
+                    self.viewModel.fetchOnAppear()
+                }
                 Picker(selection: self.$viewModel.selected, label: Text("Select")) {
                     Text("Cards").tag(0)
                     Text("Pokemons").tag(1)
@@ -59,9 +62,5 @@ struct ContentView: View {
             }
         }
         .edgesIgnoringSafeArea(.bottom)
-        .onAppear() {
-            self.viewModel.fetchCards()
-            self.viewModel.fetchPokemons()
-        }
     }
 }
