@@ -6,21 +6,23 @@
 //
 
 import Foundation
+import RealmSwift
 
+public class PokemonSprites: RealmSwift.Object, Codable {
 
-public struct PokemonSprites: Codable { 
+    @objc dynamic public var name: String?
+    @objc dynamic public var frontDefault: String?
+    @objc dynamic public var frontShiny: String?
+    @objc dynamic public var frontFemale: String?
+    @objc dynamic public var frontShinyFemale: String?
+    @objc dynamic public var backDefault: String?
+    @objc dynamic public var backShiny: String?
+    @objc dynamic public var backFemale: String?
+    @objc dynamic public var backShinyFemale: String?
 
-    public var name: String?
-    public var frontDefault: String?
-    public var frontShiny: String?
-    public var frontFemale: String?
-    public var frontShinyFemale: String?
-    public var backDefault: String?
-    public var backShiny: String?
-    public var backFemale: String?
-    public var backShinyFemale: String?
-
-    public init(name: String?, frontDefault: String?, frontShiny: String?, frontFemale: String?, frontShinyFemale: String?, backDefault: String?, backShiny: String?, backFemale: String?, backShinyFemale: String?) {
+    public convenience init(name: String?, frontDefault: String?, frontShiny: String?, frontFemale: String?, frontShinyFemale: String?, backDefault: String?, backShiny: String?, backFemale: String?, backShinyFemale: String?) {
+        self.init()
+        
         self.name = name
         self.frontDefault = frontDefault
         self.frontShiny = frontShiny

@@ -40,7 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         ServiceLocator.shared.addService(service: DataBaseService() as IDataBaseService)
         ServiceLocator.shared.addService(service: MainService(databaseService: ServiceLocator.shared.getService(type: IDataBaseService.self)) as IMainService)
         ServiceLocator.shared.addService(service: CardNetworkService(mainService: ServiceLocator.shared.getService(type: IMainService.self)) as ICardNetworkService)
-        ServiceLocator.shared.addService(service: PokemonNetworkService(cache: ServiceLocator.shared.getService(type: ICache.self)) as IPokemonNetworkService)
+        ServiceLocator.shared.addService(service: PokemonNetworkService(mainService: ServiceLocator.shared.getService(type: IMainService.self)) as IPokemonNetworkService)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

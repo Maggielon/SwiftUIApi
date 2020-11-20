@@ -37,6 +37,6 @@ final class CardViewModel: ObservableObject {
     }
     
     func cardTypeString() -> String {
-        self.card?.types?.compactMap { $0 }.joined(separator: ", ") ?? ""
+        self.card?.types.compactMap { $0 }.joined(separator: ", ") ?? ""
     }
 }

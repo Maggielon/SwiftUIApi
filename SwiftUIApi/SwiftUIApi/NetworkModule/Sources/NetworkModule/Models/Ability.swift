@@ -6,43 +6,15 @@
 //
 
 import Foundation
+import RealmSwift
 
+public class Ability: RealmSwift.Object, Codable {
 
-public struct Ability: Codable { 
+    @objc dynamic public var name: String?
 
-
-    public var id: Int?
-    public var name: String?
-    public var isMainSeries: Bool?
-    public var generation: Generation?
-    public var names: [Name]?
-    public var effectEntries: [VerboseEffect]?
-    public var effectChanges: [AbilityEffectChange]?
-    public var flavorTextEntries: [AbilityFlavorText]?
-    public var pokemon: [AbilityPokemon]?
-
-    public init(id: Int?, name: String?, isMainSeries: Bool?, generation: Generation?, names: [Name]?, effectEntries: [VerboseEffect]?, effectChanges: [AbilityEffectChange]?, flavorTextEntries: [AbilityFlavorText]?, pokemon: [AbilityPokemon]?) {
-        self.id = id
+    public convenience init(name: String?) {
+        self.init()
+        
         self.name = name
-        self.isMainSeries = isMainSeries
-        self.generation = generation
-        self.names = names
-        self.effectEntries = effectEntries
-        self.effectChanges = effectChanges
-        self.flavorTextEntries = flavorTextEntries
-        self.pokemon = pokemon
     }
-
-    public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case id
-        case name
-        case isMainSeries = "is_main_series"
-        case generation
-        case names
-        case effectEntries = "effect_entries"
-        case effectChanges = "effect_changes"
-        case flavorTextEntries = "flavor_text_entries"
-        case pokemon
-    }
-
 }

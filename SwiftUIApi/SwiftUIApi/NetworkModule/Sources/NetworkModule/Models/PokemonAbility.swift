@@ -6,25 +6,16 @@
 //
 
 import Foundation
+import RealmSwift
 
+public class PokemonAbility: RealmSwift.Object, Codable {
 
-public struct PokemonAbility: Codable { 
+    @objc dynamic public var ability: Ability?
 
-
-    public var isHidden: Bool?
-    public var slot: Int?
-    public var ability: Ability?
-
-    public init(isHidden: Bool?, slot: Int?, ability: Ability?) {
-        self.isHidden = isHidden
-        self.slot = slot
+    public convenience init(ability: Ability?) {
+        self.init()
+        
         self.ability = ability
-    }
-
-    public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case isHidden = "is_hidden"
-        case slot
-        case ability
     }
 
 }

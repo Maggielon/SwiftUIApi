@@ -6,28 +6,15 @@
 //
 
 import Foundation
+import RealmSwift
 
+public class Version: RealmSwift.Object, Codable {
 
-public struct Version: Codable { 
+    @objc dynamic public var name: String?
 
-
-    public var id: Int?
-    public var name: String?
-    public var names: [Name]?
-    public var versionGroup: VersionGroup?
-
-    public init(id: Int?, name: String?, names: [Name]?, versionGroup: VersionGroup?) {
-        self.id = id
+    public convenience init(name: String?) {
+        self.init()
+        
         self.name = name
-        self.names = names
-        self.versionGroup = versionGroup
     }
-
-    public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case id
-        case name
-        case names
-        case versionGroup = "version_group"
-    }
-
 }

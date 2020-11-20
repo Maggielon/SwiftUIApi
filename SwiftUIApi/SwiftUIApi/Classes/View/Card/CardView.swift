@@ -28,16 +28,15 @@ struct CardView: View {
                         hp: self.viewModel.card?.hp,
                         types: self.viewModel.cardTypeString()
                     )
-                    CardMainView(attacks: self.viewModel.card?.attacks ?? [])
+                    CardMainView(attacks: self.viewModel.card?.attacks.toArray() ?? [])
                     CardDetailsView(
                         artist: self.viewModel.card?.artist,
                         rarity: self.viewModel.card?.rarity,
                         setValue: self.viewModel.card?.setValue,
-                        weaknesses: self.viewModel.card?.weaknesses,
-                        resistances: self.viewModel.card?.resistances,
-                        retreatCost: self.viewModel.card?.retreatCost
+                        weaknesses: self.viewModel.card?.weaknesses.toArray(),
+                        resistances: self.viewModel.card?.resistances.toArray(),
+                        retreatCost: self.viewModel.card?.retreatCost.toArray()
                     )
-                    
                 }.padding(.horizontal, 20)
             } else {
                 Spinner(style: .large)

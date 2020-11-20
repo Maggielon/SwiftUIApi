@@ -6,55 +6,14 @@
 //
 
 import Foundation
+import RealmSwift
 
+public class PokemonForm: RealmSwift.Object, Codable {
 
-public struct PokemonForm: Codable { 
+    @objc dynamic public var name: String?
 
-
-    public var id: Int?
-    public var name: String?
-    public var order: Int?
-    public var formOrder: Int?
-    public var isDefault: Bool?
-    public var isBattleOnly: Bool?
-    public var isMega: Bool?
-    public var formName: String?
-    public var pokemon: Pokemon?
-    public var sprites: PokemonFormSprites?
-    public var versionGroup: VersionGroup?
-    public var names: [Name]?
-    public var formNames: [Name]?
-
-    public init(id: Int?, name: String?, order: Int?, formOrder: Int?, isDefault: Bool?, isBattleOnly: Bool?, isMega: Bool?, formName: String?, pokemon: Pokemon?, sprites: PokemonFormSprites?, versionGroup: VersionGroup?, names: [Name]?, formNames: [Name]?) {
-        self.id = id
+    public convenience init(name: String?) {
+        self.init()
         self.name = name
-        self.order = order
-        self.formOrder = formOrder
-        self.isDefault = isDefault
-        self.isBattleOnly = isBattleOnly
-        self.isMega = isMega
-        self.formName = formName
-        self.pokemon = pokemon
-        self.sprites = sprites
-        self.versionGroup = versionGroup
-        self.names = names
-        self.formNames = formNames
     }
-
-    public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case id
-        case name
-        case order
-        case formOrder = "form_order"
-        case isDefault = "is_default"
-        case isBattleOnly = "is_battle_only"
-        case isMega = "is_mega"
-        case formName = "form_name"
-        case pokemon
-        case sprites
-        case versionGroup = "version_group"
-        case names
-        case formNames = "form_names"
-    }
-
 }

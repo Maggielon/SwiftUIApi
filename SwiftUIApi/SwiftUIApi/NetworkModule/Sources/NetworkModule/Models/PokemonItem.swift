@@ -6,17 +6,22 @@
 //
 
 import Foundation
+import RealmSwift
+
+public class PokemonItem: RealmSwift.Object, Codable {
 
 
-public struct PokemonItem: Codable { 
+    @objc dynamic public var name: String?
+    @objc dynamic public var url: String?
 
-
-    public var name: String?
-    public var url: String?
-
-    public init(name: String?, url: String?) {
+    public convenience init(name: String?, url: String?) {
+        self.init()
+        
         self.name = name
         self.url = url
     }
-
+    
+    override public class func primaryKey() -> String? {
+        return "name"
+    }
 }

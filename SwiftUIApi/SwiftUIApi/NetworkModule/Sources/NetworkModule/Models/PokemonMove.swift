@@ -6,22 +6,16 @@
 //
 
 import Foundation
+import RealmSwift
 
+public class PokemonMove: RealmSwift.Object, Codable {
 
-public struct PokemonMove: Codable { 
+    @objc dynamic public var move: Move?
 
-
-    public var move: Move?
-    public var versionGroupDetails: [PokemonMoveVersion]?
-
-    public init(move: Move?, versionGroupDetails: [PokemonMoveVersion]?) {
+    public convenience init(move: Move?) {
+        self.init()
+        
         self.move = move
-        self.versionGroupDetails = versionGroupDetails
-    }
-
-    public enum CodingKeys: String, CodingKey, CaseIterable { 
-        case move
-        case versionGroupDetails = "version_group_details"
     }
 
 }

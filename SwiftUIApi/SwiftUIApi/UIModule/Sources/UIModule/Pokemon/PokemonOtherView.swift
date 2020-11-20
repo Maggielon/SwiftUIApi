@@ -19,9 +19,9 @@ public struct PokemonOtherView: View {
     
     public var body: some View {
         Section {
-            ItemView(title: "Height", value: self.pokemon?.height?.description)
-            ItemView(title: "Weight", value: self.pokemon?.weight?.description)
-            ItemView(title: "Moves: ", value: self.pokemon?.moves?.compactMap( { $0.move?.name }).joined(separator: ", "))
+            ItemView(title: "Height", value: self.pokemon?.height.value?.description)
+            ItemView(title: "Weight", value: self.pokemon?.weight.value?.description)
+            ItemView(title: "Moves: ", value: self.pokemon?.moves.compactMap( { $0.move?.name }).joined(separator: ", "))
             ItemView(title: "Species: ", value: self.pokemon?.species?.name)
         }
     }

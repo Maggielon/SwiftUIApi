@@ -6,22 +6,26 @@
 //
 
 import Foundation
+import RealmSwift
 
-
-public struct VersionGameIndex: Codable { 
-
-
-    public var gameIndex: Int?
-    public var version: Version?
-
-    public init(gameIndex: Int?, version: Version?) {
-        self.gameIndex = gameIndex
-        self.version = version
+public class VersionGameIndex: RealmSwift.Object, Codable {
+    
+    public var gameIndex: RealmOptional<Int> = .init(nil)
+    @objc dynamic public var version: Version?
+    
+    public var infoText: String {
+        (self.gameIndex.value?.description ?? "") + " ver: " + (self.version?.name ?? "")
     }
-
+    
+    public required convenience init(from decoder: Decoder) throws {
+        self.init()
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.gameIndex = .init(try? container.decode(Int.self, forKey: .gameIndex))
+        self.version = try? container.decode(Version.self, forKey: .version)
+    }
+    
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case gameIndex = "game_index"
         case version
     }
-
 }

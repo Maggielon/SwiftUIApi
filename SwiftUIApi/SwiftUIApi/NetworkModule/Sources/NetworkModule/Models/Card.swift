@@ -51,10 +51,10 @@ public class Card: RealmSwift.Object, Codable {
     }
     @objc dynamic public var id: String?
     @objc dynamic public var name: String?
-    //@objc dynamic public var nationalPokedexNumber = 0
+    public var nationalPokedexNumber: RealmOptional<Int> = .init(nil)
     @objc dynamic public var imageUrl: String?
     @objc dynamic public var imageUrlHiRes: String?
-    public var types: [String]?
+    public var types = RealmSwift.List<String>()
     @objc dynamic public var supertype: String?
     @objc dynamic public var subtype: String?
     @objc dynamic public var evolvesFrom: String?
@@ -65,42 +65,43 @@ public class Card: RealmSwift.Object, Codable {
     @objc dynamic public var series: String?
     @objc dynamic public var setValue: String?
     @objc dynamic public var setCode: String?
-    public var retreatCost: [String]?
-    public var attacks: [Attack]?
-    public var weaknesses: [Weakness]?
-    public var resistances: [Resistance]?
-    public var ancientTrait: [AncientTrait]?
+    public var retreatCost = RealmSwift.List<String>()
+    public var attacks = RealmSwift.List<Attack>()
+    public var weaknesses = RealmSwift.List<Weakness>()
+    public var resistances = RealmSwift.List<Resistance>()
+    public var ancientTrait = RealmSwift.List<AncientTrait>()
 
-    public convenience init(id: String?, name: String?/*, nationalPokedexNumber: Int = 0*/, imageUrl: String?, imageUrlHiRes: String?, types: [String]?, supertype: String?, subtype: String?, evolvesFrom: String?, hp: String?, number: String?, artist: String?, rarity: String?, series: String?, setValue: String?, setCode: String?, retreatCost: [String]?, attacks: [Attack]?, weaknesses: [Weakness]?, resistances: [Resistance]?, ancientTrait: [AncientTrait]?) {
+    public required convenience init(from decoder: Decoder) throws {
         self.init()
         
-        self.id = id
-        self.name = name
-        //self.nationalPokedexNumber = nationalPokedexNumber
-        self.imageUrl = imageUrl
-        self.imageUrlHiRes = imageUrlHiRes
-        self.types = types
-        self.supertype = supertype
-        self.subtype = subtype
-        self.evolvesFrom = evolvesFrom
-        self.hp = hp
-        self.number = number
-        self.artist = artist
-        self.rarity = rarity
-        self.series = series
-        self.setValue = setValue
-        self.setCode = setCode
-        self.retreatCost = retreatCost
-        self.attacks = attacks
-        self.weaknesses = weaknesses
-        self.resistances = resistances
-        self.ancientTrait = ancientTrait
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try? container.decode(String.self, forKey: .id)
+        self.name = try? container.decode(String.self, forKey: .name)
+        self.nationalPokedexNumber = .init(try? container.decode(Int.self, forKey: .nationalPokedexNumber))
+        self.imageUrl = try? container.decode(String.self, forKey: .imageUrl)
+        self.imageUrlHiRes = try? container.decode(String.self, forKey: .imageUrlHiRes)
+        self.types.append(objectsIn: (try? container.decode([String].self, forKey: .types)) ?? [])
+        self.supertype = try? container.decode(String.self, forKey: .supertype)
+        self.subtype = try? container.decode(String.self, forKey: .subtype)
+        self.evolvesFrom = try? container.decode(String.self, forKey: .evolvesFrom)
+        self.hp = try? container.decode(String.self, forKey: .hp)
+        self.number = try? container.decode(String.self, forKey: .number)
+        self.artist = try? container.decode(String.self, forKey: .artist)
+        self.rarity = try? container.decode(String.self, forKey: .rarity)
+        self.series = try? container.decode(String.self, forKey: .series)
+        self.setValue = try? container.decode(String.self, forKey: .setValue)
+        self.setCode = try? container.decode(String.self, forKey: .setCode)
+        self.retreatCost.append(objectsIn: (try? container.decode([String].self, forKey: .retreatCost)) ?? [])
+        self.attacks.append(objectsIn: (try? container.decode([Attack].self, forKey: .attacks)) ?? [])
+        self.weaknesses.append(objectsIn: (try? container.decode([Weakness].self, forKey: .weaknesses)) ?? [])
+        self.resistances.append(objectsIn: (try? container.decode([Resistance].self, forKey: .resistances)) ?? [])
+        self.ancientTrait.append(objectsIn: (try? container.decode([AncientTrait].self, forKey: .ancientTrait)) ?? [])
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case id
         case name
-        // case nationalPokedexNumber
+         case nationalPokedexNumber
         case imageUrl
         case imageUrlHiRes
         case types
@@ -123,5 +124,12 @@ public class Card: RealmSwift.Object, Codable {
     
     override public class func primaryKey() -> String? {
         return "id"
+    }
+}
+
+public extension RealmSwift.List {
+    
+    func toArray() -> [Element] {
+        Array(self)
     }
 }

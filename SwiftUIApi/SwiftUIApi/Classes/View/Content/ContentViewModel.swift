@@ -61,7 +61,7 @@ final class ContentViewModel: ObservableObject {
                 }
             },
             receiveValue: { list in
-                self.state.pokemons += list.results ?? []
+                self.state.pokemons += list
                 self.state.offset += self.state.limit
                 self.state.canLoadNextPage = true
             }
@@ -82,7 +82,7 @@ final class ContentViewModel: ObservableObject {
                 }
             },
             receiveValue: { list in
-                self.state.cards += list ?? []
+                self.state.cards += list
                 self.state.cardPage += 1
                 self.state.canLoadCardNextPage = true
             }
