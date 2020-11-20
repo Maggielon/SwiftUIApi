@@ -27,12 +27,12 @@ public struct CardCell<Destination>: View where Destination: View {
                     HStack {
                         Text(self.card.name ?? "")
                             .font(.system(size: 18, weight: .semibold))
-                        Text(self.card.nationalPokedexNumber != nil ? "(\(self.card.nationalPokedexNumber?.description ?? ""))" : "")
-                            .font(.system(size: 12, weight: .light))
+//                        Text("(\(self.card.nationalPokedexNumber.description ?? ""))")
+//                        .font(.system(size: 12, weight: .light))
                     }
-                    self.detail(title: "Type: ", value: self.card.types?.compactMap { $0.rawValue }.joined(separator: ", "))
-                    self.detail(title: "Subtype: ", value: self.card.subtype?.rawValue)
-                    self.detail(title: "Supertype: ", value: self.card.supertype?.rawValue)
+                    self.detail(title: "Type: ", value: self.card.types?.compactMap { $0 }.joined(separator: ", "))
+                    self.detail(title: "Subtype: ", value: self.card.subtype)
+                    self.detail(title: "Supertype: ", value: self.card.supertype)
                     self.detail(title: "Series: ", value: self.card.series)
                     self.detail(title: "Set: ", value: self.card.setValue)
                     self.detail(title: "HP: ", value: self.card.hp)

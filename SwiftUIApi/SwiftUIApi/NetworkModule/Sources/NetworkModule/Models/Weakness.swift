@@ -6,15 +6,17 @@
 //
 
 import Foundation
+import RealmSwift
+
+public class Weakness: RealmSwift.Object, Codable {
 
 
-public struct Weakness: Codable { 
+    @objc dynamic public var type: String?
+    @objc dynamic public var value: String?
 
-
-    public var type: String?
-    public var value: String?
-
-    public init(type: String?, value: String?) {
+    public convenience init(type: String?, value: String?) {
+        self.init()
+        
         self.type = type
         self.value = value
     }

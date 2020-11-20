@@ -6,18 +6,20 @@
 //
 
 import Foundation
+import RealmSwift
 
-
-public struct Attack: Codable { 
+public class Attack: RealmSwift.Object, Codable {
 
 
     public var cost: [String]?
-    public var name: String?
-    public var text: String?
-    public var damage: String?
-    public var convertedEnergyCost: Int?
+    @objc dynamic public var name: String?
+    @objc dynamic public var text: String?
+    @objc dynamic public var damage: String?
+    @objc dynamic public var convertedEnergyCost = 0
 
-    public init(cost: [String]?, name: String?, text: String?, damage: String?, convertedEnergyCost: Int?) {
+    public convenience init(cost: [String]?, name: String?, text: String?, damage: String?, convertedEnergyCost: Int = 0) {
+        self.init()
+        
         self.cost = cost
         self.name = name
         self.text = text

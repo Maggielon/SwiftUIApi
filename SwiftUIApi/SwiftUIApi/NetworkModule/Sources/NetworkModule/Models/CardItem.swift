@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import RealmSwift
+
+public class CardItem: RealmSwift.Object, Codable {
 
 
-public struct CardItem: Codable {
+    @objc dynamic public var card: Card?
 
-
-    public var card: Card?
-
-    public init(card: Card?) {
+    public convenience init(card: Card?) {
+        self.init()
+        
         self.card = card
     }
 

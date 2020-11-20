@@ -6,9 +6,9 @@
 //
 
 import Foundation
+import RealmSwift
 
-
-public struct Card: Codable { 
+public class Card: RealmSwift.Object, Codable {
 
 
     public enum Types: String, Codable, CaseIterable {
@@ -49,33 +49,34 @@ public struct Card: Codable {
         case rocketsSecretMachine = "Rocket's Secret Machine"
         case empty = ""
     }
-    public var id: String?
-    public var name: String?
-    public var nationalPokedexNumber: Int?
-    public var imageUrl: String?
-    public var imageUrlHiRes: String?
-    public var types: [Types]?
-    public var supertype: Supertype?
-    public var subtype: Subtype?
-    public var evolvesFrom: String?
-    public var hp: String?
-    public var number: String?
-    public var artist: String?
-    public var rarity: String?
-    public var series: String?
-    public var setValue: String?
-    public var setCode: String?
+    @objc dynamic public var id: String?
+    @objc dynamic public var name: String?
+    //@objc dynamic public var nationalPokedexNumber = 0
+    @objc dynamic public var imageUrl: String?
+    @objc dynamic public var imageUrlHiRes: String?
+    public var types: [String]?
+    @objc dynamic public var supertype: String?
+    @objc dynamic public var subtype: String?
+    @objc dynamic public var evolvesFrom: String?
+    @objc dynamic public var hp: String?
+    @objc dynamic public var number: String?
+    @objc dynamic public var artist: String?
+    @objc dynamic public var rarity: String?
+    @objc dynamic public var series: String?
+    @objc dynamic public var setValue: String?
+    @objc dynamic public var setCode: String?
     public var retreatCost: [String]?
-    public var convertedRetreatCost: Int?
     public var attacks: [Attack]?
     public var weaknesses: [Weakness]?
     public var resistances: [Resistance]?
     public var ancientTrait: [AncientTrait]?
 
-    public init(id: String?, name: String?, nationalPokedexNumber: Int?, imageUrl: String?, imageUrlHiRes: String?, types: [Types]?, supertype: Supertype?, subtype: Subtype?, evolvesFrom: String?, hp: String?, number: String?, artist: String?, rarity: String?, series: String?, setValue: String?, setCode: String?, retreatCost: [String]?, convertedRetreatCost: Int?, attacks: [Attack]?, weaknesses: [Weakness]?, resistances: [Resistance]?, ancientTrait: [AncientTrait]?) {
+    public convenience init(id: String?, name: String?/*, nationalPokedexNumber: Int = 0*/, imageUrl: String?, imageUrlHiRes: String?, types: [String]?, supertype: String?, subtype: String?, evolvesFrom: String?, hp: String?, number: String?, artist: String?, rarity: String?, series: String?, setValue: String?, setCode: String?, retreatCost: [String]?, attacks: [Attack]?, weaknesses: [Weakness]?, resistances: [Resistance]?, ancientTrait: [AncientTrait]?) {
+        self.init()
+        
         self.id = id
         self.name = name
-        self.nationalPokedexNumber = nationalPokedexNumber
+        //self.nationalPokedexNumber = nationalPokedexNumber
         self.imageUrl = imageUrl
         self.imageUrlHiRes = imageUrlHiRes
         self.types = types
@@ -90,7 +91,6 @@ public struct Card: Codable {
         self.setValue = setValue
         self.setCode = setCode
         self.retreatCost = retreatCost
-        self.convertedRetreatCost = convertedRetreatCost
         self.attacks = attacks
         self.weaknesses = weaknesses
         self.resistances = resistances
@@ -100,7 +100,7 @@ public struct Card: Codable {
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case id
         case name
-        case nationalPokedexNumber
+        // case nationalPokedexNumber
         case imageUrl
         case imageUrlHiRes
         case types
@@ -115,11 +115,13 @@ public struct Card: Codable {
         case setValue = "set"
         case setCode
         case retreatCost
-        case convertedRetreatCost
         case attacks
         case weaknesses
         case resistances
         case ancientTrait
     }
-
+    
+    override public class func primaryKey() -> String? {
+        return "id"
+    }
 }

@@ -82,7 +82,7 @@ final class ContentViewModel: ObservableObject {
                 }
             },
             receiveValue: { list in
-                self.state.cards += list.cards ?? []
+                self.state.cards += list ?? []
                 self.state.cardPage += 1
                 self.state.canLoadCardNextPage = true
             }

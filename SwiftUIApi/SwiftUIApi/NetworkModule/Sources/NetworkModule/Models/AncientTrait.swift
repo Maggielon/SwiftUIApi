@@ -6,15 +6,17 @@
 //
 
 import Foundation
+import RealmSwift
+
+public class AncientTrait: RealmSwift.Object, Codable {
 
 
-public struct AncientTrait: Codable { 
+    @objc dynamic public var name: String?
+    @objc dynamic public var text: String?
 
-
-    public var name: String?
-    public var text: String?
-
-    public init(name: String?, text: String?) {
+    public convenience init(name: String?, text: String?) {
+        self.init()
+        
         self.name = name
         self.text = text
     }

@@ -23,8 +23,8 @@ struct CardView: View {
                 VStack {
                     CardTitleView(
                         imageUrl: self.viewModel.card?.imageURL,
-                        supertype: self.viewModel.card?.supertype?.rawValue,
-                        subtype: self.viewModel.card?.subtype?.rawValue,
+                        supertype: self.viewModel.card?.supertype,
+                        subtype: self.viewModel.card?.subtype,
                         hp: self.viewModel.card?.hp,
                         types: self.viewModel.cardTypeString()
                     )

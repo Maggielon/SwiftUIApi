@@ -7,9 +7,7 @@
 
 import Foundation
 
-
-public struct CardsList: Codable { 
-
+public class CardsList: Codable {
 
     public var cards: [Card]?
 

@@ -6,15 +6,17 @@
 //
 
 import Foundation
+import RealmSwift
+
+public class Resistance: RealmSwift.Object, Codable {
 
 
-public struct Resistance: Codable { 
+    @objc dynamic public var type: String?
+    @objc dynamic public var value: String?
 
-
-    public var type: String?
-    public var value: String?
-
-    public init(type: String?, value: String?) {
+    public convenience init(type: String?, value: String?) {
+        self.init()
+        
         self.type = type
         self.value = value
     }

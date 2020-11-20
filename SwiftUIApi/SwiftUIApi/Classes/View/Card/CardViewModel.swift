@@ -31,12 +31,12 @@ final class CardViewModel: ObservableObject {
                 }
             },
             receiveValue: { card in
-                self.card = card.card
+                self.card = card
             }
         ).store(in: &subscriptions)
     }
     
     func cardTypeString() -> String {
-        self.card?.types?.compactMap { $0.rawValue }.joined(separator: ", ") ?? ""
+        self.card?.types?.compactMap { $0 }.joined(separator: ", ") ?? ""
     }
 }
