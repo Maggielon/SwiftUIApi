@@ -39,7 +39,7 @@ struct Screen: Identifiable, Equatable {
 
 // MARK: - Logic
 
-final class NavControllerViewModel: ObservableObject {
+public final class NavControllerViewModel: ObservableObject {
     
     private let easing: Animation
     
@@ -55,13 +55,13 @@ final class NavControllerViewModel: ObservableObject {
     
     // Init
     
-    init(easing: Animation) {
+    public init(easing: Animation = .easeOut(duration: 0.33)) {
         self.easing = easing
     }
     
     // API
     
-    func push<S: View>(_ screenView: S) {
+    public func push<S: View>(_ screenView: S) {
         withAnimation(easing) {
             navigationType = .push
             let screen = Screen(id: UUID().uuidString, nextScreen: AnyView(screenView))
@@ -69,7 +69,7 @@ final class NavControllerViewModel: ObservableObject {
         }
     }
     
-    func pop(to: PopDestination = .previous) {
+    public func pop(to: PopDestination = .previous) {
         withAnimation(easing) {
             navigationType = .pop
             switch to {

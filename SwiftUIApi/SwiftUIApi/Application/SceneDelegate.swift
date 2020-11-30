@@ -14,7 +14,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -36,6 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func registServices() {
+        ServiceLocator.shared.addService(service: FileService() as IFileService)
         ServiceLocator.shared.addService(service: Cache() as ICache)
         ServiceLocator.shared.addService(service: DataBaseService() as IDataBaseService)
         ServiceLocator.shared.addService(service: MainService(databaseService: ServiceLocator.shared.getService(type: IDataBaseService.self)) as IMainService)

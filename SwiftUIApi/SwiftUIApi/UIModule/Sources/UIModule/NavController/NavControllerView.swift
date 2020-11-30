@@ -17,8 +17,8 @@ public struct NavControllerView<Content>: View where Content: View {
     private let content: Content
     private let transition: (push: AnyTransition, pop: AnyTransition)
     
-    public init(transition: NavTransiton, easing: Animation = .easeOut(duration: 0.33), @ViewBuilder content: @escaping () -> Content) {
-        self.viewModel = NavControllerViewModel(easing: easing)
+    public init(transition: NavTransiton, viewModel: NavControllerViewModel, @ViewBuilder content: @escaping () -> Content) {
+        self.viewModel = viewModel
         self.content = content()
         switch transition {
         case .custom(let pushTransition, let popTransition):

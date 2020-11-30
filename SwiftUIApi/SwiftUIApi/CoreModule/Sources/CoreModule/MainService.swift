@@ -48,7 +48,7 @@ extension MainService: IMainService {
                 let writeRealm = strongify.databaseService?.newRealm
                 do {
                     try writeRealm?.write {
-                        writeRealm?.add(data, update: .all)
+                        writeRealm?.add(data, update: .modified)
                     }
                 } catch {
                     print(error)
@@ -64,7 +64,7 @@ extension MainService: IMainService {
                 let writeRealm = strongify.databaseService?.newRealm
                 do {
                     try writeRealm?.write {
-                        writeRealm?.add(data, update: .all)
+                        writeRealm?.add(data, update: .modified)
                     }
                 } catch {
                     print(error)

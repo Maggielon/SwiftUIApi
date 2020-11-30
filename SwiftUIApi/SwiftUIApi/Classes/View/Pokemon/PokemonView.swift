@@ -14,17 +14,17 @@ struct PokemonView: View {
     
     @ObservedObject var viewModel = PokemonViewModel()
     
-    var item: PokemonItem
+    var name: String
     
     var body: some View {
         VStack {
-            FakeNavBar(label: item.name ?? "")
+            FakeNavBar(label: name)
             Spacer()
             List {
                 if self.viewModel.pokemon != nil {
                     PokemonMainView(
                         pokemon: self.viewModel.pokemon,
-                        destination: SpritesView(sprites: self.viewModel.pokemon?.sprites, name: self.item.name ?? "")
+                        destination: SpritesView(sprites: self.viewModel.pokemon?.sprites, name: self.name)
                     )
                     PokemonOtherView(pokemon: self.viewModel.pokemon)
                     
@@ -34,9 +34,7 @@ struct PokemonView: View {
                 }
             }
         }.onAppear {
-            if let name = self.item.name {
-                self.viewModel.fetchPokemon(with: name)
-            }
+            self.viewModel.fetchPokemon(with: self.name)
         }
     }
 }

@@ -32,6 +32,21 @@ final class ContentViewModel: ObservableObject {
     private let cardNS = ServiceLocator.shared.getService(type: ICardNetworkService.self)
     private let pokemonNS = ServiceLocator.shared.getService(type: IPokemonNetworkService.self)
     
+    private let fileService = ServiceLocator.shared.getService(type: IFileService.self)
+    
+    var testData: TestData
+    
+    var isFirstAppear: Bool = true 
+    
+    init() {
+        self.testData = fileService?.getFromFile() ?? TestData()
+        self.selected = self.testData.tab
+        $selected.sink(receiveValue: { value in
+            self.testData.tab = value
+        }).store(in: &subscriptions)
+        
+    }
+    
     func fetchOnAppear() {
         self.resetState()
         self.fetchPokemons()
@@ -87,5 +102,9 @@ final class ContentViewModel: ObservableObject {
                 self.state.canLoadCardNextPage = true
             }
         ).store(in: &subscriptions)
+    }
+    
+    func saveTestData() {
+        self.fileService?.saveToFile(data: self.testData)
     }
 }
